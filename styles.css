@@ -1,0 +1,96 @@
+/* GLOBAL FONT: Roboto */
+body, input, button, select, textarea { 
+    font-family: 'Roboto', sans-serif;
+    /* ZAPEWNIENIE WIELKICH LITER W POLACH TEKSTOWYCH ORAZ PODGLĄDZIE */
+    text-transform: uppercase; 
+}
+
+/* Specjalna klasa do wyłączania UPPERCASE */
+.no-uppercase {
+    text-transform: none;
+}
+
+
+#envelope {
+    aspect-ratio: 162 / 114;
+    width: 100%;
+    max-width: 450px; 
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box; 
+    border: 1px solid #ccc; /* WIDOCZNE TYLKO NA PODGLĄDZIE */
+}
+
+#addressBlock > div {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: inherit; /* Dziedziczenie wagi */
+}
+
+#previewNumerSprawy {
+    font-size: inherit; 
+    font-weight: inherit; 
+    color: inherit; 
+}
+
+/* --- NOWE STYLE DLA PANELU USTAWIEŃ SLIDE-IN --- */
+#settings-section-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(90vw, 400px); 
+    height: 100vh;
+    background-color: #fefcbf; 
+    z-index: 50; 
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    transform: translateX(-100%); 
+    transition: transform 0.3s ease-in-out;
+    padding: 2rem;
+    overflow-y: auto; 
+}
+
+#settings-section-container.active {
+    transform: translateX(0); 
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+    display: none;
+}
+
+#overlay.active {
+    display: block;
+}
+
+.settings-heading {
+     background-color: #fce79f; 
+     padding: 0.5rem;
+     border-radius: 0.375rem;
+     margin-top: 1rem;
+}
+
+/* --- NOWE STYLE DLA ZAKŁADEK --- */
+.tab-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-bottom-width: 4px;
+    border-color: transparent;
+    color: #4b5563; /* text-gray-600 */
+    transition: all 0.2s ease-in-out;
+}
+.tab-button.active {
+    color: #3b82f6; /* text-blue-600 */
+    border-color: #3b82f6; /* border-blue-600 */
+}
+.tab-button:hover:not(.active) {
+    background-color: #f3f4f6; /* bg-gray-100 */
+}
