@@ -2095,6 +2095,24 @@
             setTimeout(() => { mailMergeMessageArea.textContent = ''; }, 3000);
         }
 
+        function loadFromMailMerge(item) {
+             if (inputs.numer_sprawy) inputs.numer_sprawy.value = item.numer_sprawy || '';
+             if (inputs.adresat) inputs.adresat.value = item.adresat || '';
+             if (inputs.adres_cz1) inputs.adres_cz1.value = item.adres_cz1 || '';
+             if (inputs.adres_cz2) inputs.adres_cz2.value = item.adres_cz2 || '';
+             if (inputs.kod_pocztowy) inputs.kod_pocztowy.value = item.kod_pocztowy || '';
+             if (inputs.poczta) inputs.poczta.value = item.poczta || '';
+             if (inputs.uwagi_potwierdzenia) inputs.uwagi_potwierdzenia.value = item.uwagi_potwierdzenia || '';
+             if (inputs.dotyczy_potwierdzenia) inputs.dotyczy_potwierdzenia.value = item.dotyczy_potwierdzenia || '';
+
+             updatePreview();
+
+             if (inputs.kod_pocztowy.value) {
+                handlePostalCodeInput();
+             }
+             showMessage(`WCZYTANO: ${item.numer_sprawy}`, false);
+        }
+
         async function handleMailMergeSearch() {
             if (!envelopesCollection) return;
             const queryText = mailMergeSearchInput.value.toUpperCase().trim();
@@ -2145,12 +2163,18 @@
                 div.className = 'flex justify-between items-center bg-gray-100 p-2 rounded border text-xs';
 
                 const infoDiv = document.createElement('div');
+                infoDiv.className = 'cursor-pointer hover:text-blue-600 transition-colors flex-grow'; // added classes
+                infoDiv.title = "Kliknij, aby wczytać dane";
                 infoDiv.innerHTML = `<div class="font-bold truncate w-40">${item.numer_sprawy}</div><div class="truncate w-40 text-gray-600">${item.adresat}</div>`;
+                infoDiv.onclick = () => loadFromMailMerge(item);
 
                 const addBtn = document.createElement('button');
                 addBtn.textContent = '+';
-                addBtn.className = 'bg-blue-600 text-white w-6 h-6 rounded flex items-center justify-center hover:bg-blue-700';
-                addBtn.onclick = () => addToMailMergeList(item);
+                addBtn.className = 'bg-blue-600 text-white w-6 h-6 rounded flex items-center justify-center hover:bg-blue-700 ml-2'; // added ml-2
+                addBtn.onclick = (e) => {
+                    e.stopPropagation(); // Just in case
+                    addToMailMergeList(item);
+                };
 
                 div.appendChild(infoDiv);
                 div.appendChild(addBtn);
@@ -2195,12 +2219,18 @@
                 div.className = 'flex justify-between items-center bg-white p-2 rounded border text-xs shadow-sm';
 
                 const infoDiv = document.createElement('div');
+                infoDiv.className = 'cursor-pointer hover:text-blue-600 transition-colors flex-grow'; // added classes
+                infoDiv.title = "Kliknij, aby wczytać dane";
                 infoDiv.innerHTML = `<div class="font-bold truncate w-48">${item.numer_sprawy}</div>`;
+                infoDiv.onclick = () => loadFromMailMerge(item);
 
                 const removeBtn = document.createElement('button');
                 removeBtn.innerHTML = '&times;';
                 removeBtn.className = 'text-red-500 font-bold text-lg hover:text-red-700 px-2';
-                removeBtn.onclick = () => removeFromMailMergeList(index);
+                removeBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    removeFromMailMergeList(index);
+                };
 
                 div.appendChild(infoDiv);
                 div.appendChild(removeBtn);
