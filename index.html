@@ -267,6 +267,11 @@
                         </div>
                     </div>
 
+                    <div class="bg-white p-6 rounded-lg shadow-md space-y-4">
+                        <label for="uwagi_for_all" class="block text-sm font-medium text-gray-700">UWAGI (DLA WYDRUKU SERYJNEGO)</label>
+                        <textarea id="uwagi_for_all" rows="2" placeholder="Wpisz uwagi wspólne dla wszystkich zwrotek (nadpisuje uwagi indywidualne)..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+
                     <div class="text-center lg:text-left">
                          <button id="toggleSettingsButton" class="bg-yellow-500 text-white px-6 py-2 rounded-md hover:bg-yellow-600 transition-colors shadow-lg">POKAŻ / UKRYJ USTAWIENIA DRUKU</button>
                     </div>
@@ -377,19 +382,6 @@
 
                     </div>
 
-                    <div class="bg-white p-6 rounded-lg shadow-md space-y-4">
-                        <h2 class="text-xl font-semibold mb-4">GENEROWANIE WIELU KOPERT</h2>
-                        <div id="bulkMessageArea" class="h-6 text-sm font-medium text-red-600"></div>
-                        <div>
-                            <label for="bulkCaseNumbers" class="block text-sm font-medium text-gray-700">NUMERY SPRAW (JEDEN NUMER NA LINIĘ)</label>
-                            <textarea id="bulkCaseNumbers" rows="5" placeholder="Wpisz numery spraw (np. AB/123/2025)..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 uppercase"></textarea>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-4 pt-2">
-                            <button id="bulkPrintButton" class="w-full bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-700 transition-colors shadow-lg">GENERUJ KOPERTY</button>
-                            <button id="bulkReceiptsPrintButton" class="w-full bg-lime-600 text-white px-6 py-3 rounded-md hover:bg-lime-700 transition-colors shadow-lg">GENERUJ ZWROTKI</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div> <!-- Koniec envelopeGeneratorTab -->
@@ -2095,6 +2087,24 @@
             setTimeout(() => { mailMergeMessageArea.textContent = ''; }, 3000);
         }
 
+        function loadFromMailMerge(item) {
+             if (inputs.numer_sprawy) inputs.numer_sprawy.value = item.numer_sprawy || '';
+             if (inputs.adresat) inputs.adresat.value = item.adresat || '';
+             if (inputs.adres_cz1) inputs.adres_cz1.value = item.adres_cz1 || '';
+             if (inputs.adres_cz2) inputs.adres_cz2.value = item.adres_cz2 || '';
+             if (inputs.kod_pocztowy) inputs.kod_pocztowy.value = item.kod_pocztowy || '';
+             if (inputs.poczta) inputs.poczta.value = item.poczta || '';
+             if (inputs.uwagi_potwierdzenia) inputs.uwagi_potwierdzenia.value = item.uwagi_potwierdzenia || '';
+             if (inputs.dotyczy_potwierdzenia) inputs.dotyczy_potwierdzenia.value = item.dotyczy_potwierdzenia || '';
+
+             updatePreview();
+
+             if (inputs.kod_pocztowy.value) {
+                handlePostalCodeInput();
+             }
+             showMessage(`WCZYTANO: ${item.numer_sprawy}`, false);
+        }
+
         async function handleMailMergeSearch() {
             if (!envelopesCollection) return;
             const queryText = mailMergeSearchInput.value.toUpperCase().trim();
@@ -2145,12 +2155,18 @@
                 div.className = 'flex justify-between items-center bg-gray-100 p-2 rounded border text-xs';
 
                 const infoDiv = document.createElement('div');
+                infoDiv.className = 'cursor-pointer hover:text-blue-600 transition-colors flex-grow'; // added classes
+                infoDiv.title = "Kliknij, aby wczytać dane";
                 infoDiv.innerHTML = `<div class="font-bold truncate w-40">${item.numer_sprawy}</div><div class="truncate w-40 text-gray-600">${item.adresat}</div>`;
+                infoDiv.onclick = () => loadFromMailMerge(item);
 
                 const addBtn = document.createElement('button');
                 addBtn.textContent = '+';
-                addBtn.className = 'bg-blue-600 text-white w-6 h-6 rounded flex items-center justify-center hover:bg-blue-700';
-                addBtn.onclick = () => addToMailMergeList(item);
+                addBtn.className = 'bg-blue-600 text-white w-6 h-6 rounded flex items-center justify-center hover:bg-blue-700 ml-2'; // added ml-2
+                addBtn.onclick = (e) => {
+                    e.stopPropagation(); // Just in case
+                    addToMailMergeList(item);
+                };
 
                 div.appendChild(infoDiv);
                 div.appendChild(addBtn);
@@ -2195,12 +2211,18 @@
                 div.className = 'flex justify-between items-center bg-white p-2 rounded border text-xs shadow-sm';
 
                 const infoDiv = document.createElement('div');
+                infoDiv.className = 'cursor-pointer hover:text-blue-600 transition-colors flex-grow'; // added classes
+                infoDiv.title = "Kliknij, aby wczytać dane";
                 infoDiv.innerHTML = `<div class="font-bold truncate w-48">${item.numer_sprawy}</div>`;
+                infoDiv.onclick = () => loadFromMailMerge(item);
 
                 const removeBtn = document.createElement('button');
                 removeBtn.innerHTML = '&times;';
                 removeBtn.className = 'text-red-500 font-bold text-lg hover:text-red-700 px-2';
-                removeBtn.onclick = () => removeFromMailMergeList(index);
+                removeBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    removeFromMailMergeList(index);
+                };
 
                 div.appendChild(infoDiv);
                 div.appendChild(removeBtn);
@@ -2243,8 +2265,26 @@
                 return;
             }
             try {
+                // Get the global note value
+                const uwagiForAll = document.getElementById('uwagi_for_all')?.value || "";
+
                 const pdfContent = mailMergeList.map((data, index) => {
-                    const singleReceiptDef = createReceiptContent(data);
+                    // Create a copy of data to not mutate original list
+                    const itemData = { ...data };
+
+                    // Override individual notes if global note is present
+                    // User requested: "wartość ma być drukowana zamiast uwag w zwrotkach drukowanych seryjnie"
+                    // If the field is empty, we fall back to individual notes (standard behavior),
+                    // or should we print nothing if empty?
+                    // "zamiast" implies replacement.
+                    // If the user leaves it empty, they likely want empty notes or original notes?
+                    // Usually "bulk override" means "use this if set".
+                    // I will implement: use uwagiForAll if it is not empty.
+                    if (uwagiForAll.trim() !== "") {
+                        itemData.uwagi_potwierdzenia = uwagiForAll;
+                    }
+
+                    const singleReceiptDef = createReceiptContent(itemData);
                     const contentWrapper = {
                         stack: singleReceiptDef.content
                     };
