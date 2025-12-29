@@ -148,29 +148,48 @@
     </div>
 
 
-    <!-- Ekran Logowania (bez zmian) -->
-    <div id="authContainer" class="max-w-md mx-auto bg-white rounded-lg shadow-xl p-8 mt-16">
-        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">LOGOWANIE DO GENERATORA</h2>
+    <!-- Ekran Logowania -->
+    <div id="authContainer" class="min-h-[80vh] flex flex-col items-center justify-center">
+        <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
+            <h2 class="text-2xl font-bold text-center text-gray-900 mb-2">LOGOWANIE DO GENERATORA</h2>
+            <p class="text-sm text-gray-500 text-center mb-8">Witaj z powrotem! Zaloguj się, aby kontynuować.</p>
 
-        <div class="space-y-4">
-            <div>
-                <label for="loginEmail" class="block text-sm font-medium text-gray-700">EMAIL</label>
-                <input type="email" id="loginEmail" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
-            </div>
-            <div>
-                <label for="loginPassword" class="block text-sm font-medium text-gray-700">HASŁO</label>
-                <input type="password" id="loginPassword" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
-            </div>
+            <div class="space-y-6">
+                <div>
+                    <label for="loginEmail" class="block text-xs font-bold text-gray-500 uppercase mb-2">EMAIL</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                            </svg>
+                        </div>
+                        <input type="email" id="loginEmail" placeholder="jan@example.com" class="pl-10 w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-400 no-uppercase">
+                    </div>
+                </div>
 
-            <div id="authMessageArea" class="h-6 text-sm font-medium text-red-600 text-center"></div>
+                <div>
+                    <label for="loginPassword" class="block text-xs font-bold text-gray-500 uppercase mb-2">HASŁO</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <input type="password" id="loginPassword" placeholder="........" class="pl-10 w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-400 no-uppercase">
+                    </div>
+                </div>
 
-            <div class="flex space-x-4 pt-2">
-                <button id="loginButton" class="w-full bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors">ZALOGUJ</button>
-                <button id="registerButton" class="w-full bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-colors">ZAREJESTRUJ</button>
+                <div id="authMessageArea" class="h-6 text-sm font-medium text-red-600 text-center"></div>
+
+                <div class="flex gap-4">
+                    <button id="loginButton" class="flex-1 bg-blue-600 text-white py-2.5 rounded hover:bg-blue-700 transition font-semibold uppercase text-sm shadow-md">ZALOGUJ</button>
+                    <button id="registerButton" class="flex-1 bg-green-600 text-white py-2.5 rounded hover:bg-green-700 transition font-semibold uppercase text-sm shadow-md">ZAREJESTRUJ</button>
+                </div>
             </div>
-            <div class="pt-2">
-                 <button id="anonymousLoginButton" class="w-full bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600 transition-colors text-sm">KONTYNUUJ ANONIMOWO</button>
-            </div>
+        </div>
+        <div class="mt-8 text-sm text-gray-500">
+            <span class="cursor-pointer hover:underline">Pomoc</span> • <span class="cursor-pointer hover:underline">Prywatność</span>
         </div>
     </div>
 
@@ -1189,7 +1208,7 @@
         const loginPassword = document.getElementById('loginPassword');
         const loginButton = document.getElementById('loginButton');
         const registerButton = document.getElementById('registerButton');
-        const anonymousLoginButton = document.getElementById('anonymousLoginButton');
+        // anonymousLoginButton removed
         const logoutButton = document.getElementById('logoutButton');
         const authMessageArea = document.getElementById('authMessageArea');
         const userEmailDisplay = document.getElementById('userEmailDisplay');
@@ -4533,7 +4552,7 @@
         // 2. Uruchom nasłuchiwacze formularza logowania
         if (loginButton) loginButton.addEventListener('click', handleLogin);
         if (registerButton) registerButton.addEventListener('click', handleRegister);
-        if (anonymousLoginButton) anonymousLoginButton.addEventListener('click', handleAnonymousLogin);
+        // handleAnonymousLogin removed
         if (logoutButton) logoutButton.addEventListener('click', handleLogout);
 
         // 3. Centralny obserwator stanu autoryzacji
