@@ -224,17 +224,8 @@
         </button>
 
 
-        <!-- Pasek użytkownika i wylogowanie (bez zmian) -->
-        <div class="max-w-6xl mx-auto mb-4 flex justify-between items-center bg-white p-4 rounded-lg shadow-md">
-            <div>
-                <span class="text-sm text-gray-600">ZALOGOWANO JAKO:</span>
-                <span id="userEmailDisplay" class="font-medium text-gray-900"></span>
-            </div>
-            <button id="logoutButton" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors text-sm">WYLOGUJ</button>
-        </div>
-
         <!-- NOWA SEKCJA: NAWIGACJA ZAKŁADEK -->
-        <div class="max-w-6xl mx-auto bg-white rounded-t-lg shadow-md">
+        <div class="max-w-6xl mx-auto bg-white rounded-t-lg shadow-md mt-4">
             <nav class="flex border-b border-gray-200">
                 <button id="tabButtonEnvelopes" class="tab-button active">
                     GENERATOR KOPERT
@@ -252,9 +243,8 @@
         <div id="envelopeGeneratorTab" class="">
             <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
 
-                <div id="preview-section" class="order-1 lg:order-1 space-y-4">
-                    <h1 class="text-3xl font-bold text-gray-800 hidden lg:block">GENERATOR KOPERT C6 (162X114MM)</h1>
-                    <div id="preview-container" class="bg-white p-6 rounded-lg shadow-2xl flex justify-center items-center lg:items-start print:shadow-none print:p-0">
+                <div id="preview-section" class="order-1 lg:order-1 space-y-2">
+                    <div id="preview-container" class="bg-white p-4 rounded-lg shadow-2xl flex justify-center items-center lg:items-start print:shadow-none print:p-0">
                         <div id="envelope" class="bg-white p-4 shadow-xl">
                             <div id="previewNumerSprawy" class="absolute" style="left: 15mm; top: 15mm;"></div>
 
@@ -267,9 +257,9 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-6 rounded-lg shadow-md space-y-4">
-                        <label for="uwagi_for_all" class="block text-sm font-medium text-gray-700">UWAGI (DLA WYDRUKU SERYJNEGO)</label>
-                        <textarea id="uwagi_for_all" rows="2" placeholder="Wpisz uwagi wspólne dla wszystkich zwrotek (nadpisuje uwagi indywidualne)..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    <div class="bg-white p-4 rounded-lg shadow-md space-y-2">
+                        <label for="uwagi_for_all" class="block text-xs font-medium text-gray-700">UWAGI (DLA WYDRUKU SERYJNEGO)</label>
+                        <textarea id="uwagi_for_all" rows="2" placeholder="Wpisz uwagi wspólne dla wszystkich zwrotek (nadpisuje uwagi indywidualne)..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm"></textarea>
                     </div>
 
                     <div class="text-center lg:text-left">
@@ -278,55 +268,52 @@
                 </div>
 
 
-                <div id="controls" class="order-2 lg:order-2 space-y-6">
-                    <h1 class="text-3xl font-bold text-gray-800 block lg:hidden">GENERATOR KOPERT C6 (162X114MM)</h1>
+                <div id="controls" class="order-2 lg:order-2 space-y-3">
 
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h2 class="text-xl font-semibold mb-4">WYSZUKAJ SPRAWĘ (POJEDYNCZO)</h2>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
                         <div class="flex space-x-2">
-                            <input type="text" id="searchNumerSprawy" placeholder="Wpisz numer sprawy..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase">
-                            <button id="searchButton" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">SZUKAJ</button>
+                            <input type="text" id="searchNumerSprawy" placeholder="Wpisz numer sprawy..." class="w-full px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase text-sm">
+                            <button id="searchButton" class="bg-blue-600 text-white px-4 py-1 rounded-md hover:bg-blue-700 transition-colors text-sm">SZUKAJ</button>
                         </div>
                     </div>
 
-                    <div class="bg-white p-6 rounded-lg shadow-md space-y-4" id="envelopeForm">
-                        <h2 class="text-xl font-semibold mb-4">WPROWADŹ DANE</h2>
+                    <div class="bg-white p-4 rounded-lg shadow-md space-y-2" id="envelopeForm">
 
                         <!-- NOWY PRZYCISK KOPIOWANIA ADRESU -->
-                        <button id="copySupportAddressButton" class="w-full bg-cyan-600 text-white px-4 py-2 rounded-md hover:bg-cyan-700 transition-colors text-sm">
+                        <button id="copySupportAddressButton" class="w-full bg-cyan-600 text-white px-4 py-1 rounded-md hover:bg-cyan-700 transition-colors text-xs">
                             SKOPIUJ ADRES Z ZAKŁADKI ZAWIADOMIEŃ
                         </button>
                         <!-- KONIEC NOWEGO PRZYCISKU -->
 
                         <div>
-                            <label for="numer_sprawy" class="block text-sm font-medium text-gray-700">NUMER SPRAWY</label>
-                            <input type="text" id="numer_sprawy" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                            <label for="numer_sprawy" class="block text-xs font-medium text-gray-700">NUMER SPRAWY</label>
+                            <input type="text" id="numer_sprawy" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                         </div>
 
                         <div>
-                            <label for="adresat" class="block text-sm font-medium text-gray-700">ADRESAT</label>
-                            <input type="text" id="adresat" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                            <label for="adresat" class="block text-xs font-medium text-gray-700">ADRESAT</label>
+                            <input type="text" id="adresat" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                         </div>
 
                         <div>
-                            <label for="adres_cz1" class="block text-sm font-medium text-gray-700">ADRES (LINIA 1)</label>
-                            <input type="text" id="adres_cz1" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                            <label for="adres_cz1" class="block text-xs font-medium text-gray-700">ADRES (LINIA 1)</label>
+                            <input type="text" id="adres_cz1" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                         </div>
 
                         <div>
-                            <label for="adres_cz2" class="block text-sm font-medium text-gray-700">ADRES (LINIA 2 - OPCJONALNIE)</label>
-                            <input type="text" id="adres_cz2" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                            <label for="adres_cz2" class="block text-xs font-medium text-gray-700">ADRES (LINIA 2 - OPCJONALNIE)</label>
+                            <input type="text" id="adres_cz2" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                         </div>
 
                         <!-- ZMODYFIKOWANA SEKCJA KODU I POCZTY -->
-                        <div class="grid grid-cols-3 gap-4">
+                        <div class="grid grid-cols-3 gap-2">
                             <div class="col-span-1">
-                                <label for="kod_pocztowy" class="block text-sm font-medium text-gray-700">KOD POCZTOWY</label>
-                                <input type="text" id="kod_pocztowy" placeholder="XX-XXX" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                                <label for="kod_pocztowy" class="block text-xs font-medium text-gray-700">KOD POCZTOWY</label>
+                                <input type="text" id="kod_pocztowy" placeholder="XX-XXX" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                             </div>
                             <div class="col-span-2">
-                                <label for="poczta" class="block text-sm font-medium text-gray-700">POCZTA (WPISZ LUB WYBIERZ)</label>
-                                <input type="text" id="poczta" list="postOfficeList" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                                <label for="poczta" class="block text-xs font-medium text-gray-700">POCZTA (WPISZ LUB WYBIERZ)</label>
+                                <input type="text" id="poczta" list="postOfficeList" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                                 <datalist id="postOfficeList">
                                     <!-- Opcje będą dodawane dynamicznie przez JS -->
                                 </datalist>
@@ -334,10 +321,10 @@
                         </div>
 
                         <!-- NOWY PRZYCISK I KOMUNIKAT DO ZAPISU KODU -->
-                        <div class="flex items-center space-x-2 mt-2">
-                             <button id="savePostOfficeButton" class="w-full bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors text-sm">ZAPISZ PARĘ KOD-POCZTA DO BAZY</button>
+                        <div class="flex items-center space-x-2 mt-1">
+                             <button id="savePostOfficeButton" class="w-full bg-teal-600 text-white px-4 py-1 rounded-md hover:bg-teal-700 transition-colors text-xs">ZAPISZ PARĘ KOD-POCZTA DO BAZY</button>
                         </div>
-                        <div id="postOfficeMessageArea" class="h-6 text-sm font-medium text-green-600 mt-1"></div>
+                        <div id="postOfficeMessageArea" class="h-4 text-xs font-medium text-green-600 mt-1"></div>
                         <!-- KONIEC MODYFIKACJI -->
 
 
@@ -346,20 +333,20 @@
 
                         <!-- NOWE POLE DOTYCZY -->
                         <div>
-                            <label for="dotyczy_potwierdzenia" class="block text-sm font-medium text-gray-700">DOTYCZY (DLA POTWIERDZENIA ODBIORU)</label>
-                            <input type="text" id="dotyczy_potwierdzenia" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" oninput="this.value = this.value.toUpperCase()">
+                            <label for="dotyczy_potwierdzenia" class="block text-xs font-medium text-gray-700">DOTYCZY (DLA POTWIERDZENIA ODBIORU)</label>
+                            <input type="text" id="dotyczy_potwierdzenia" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm" oninput="this.value = this.value.toUpperCase()">
                         </div>
 
                         <!-- ZMIANA: DODANO WRAPPER I PRZYCISKI DO SZABLONÓW -->
                         <div>
-                            <label for="uwagi_potwierdzenia" class="block text-sm font-medium text-gray-700">UWAGI (DLA POTWIERDZENIA ODBIORU)</label>
+                            <label for="uwagi_potwierdzenia" class="block text-xs font-medium text-gray-700">UWAGI (DLA POTWIERDZENIA ODBIORU)</label>
                             <div class="relative">
-                                <textarea id="uwagi_potwierdzenia" rows="3" placeholder="Wpisz uwagi..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" oninput="this.value = this.value.toUpperCase()"></textarea>
+                                <textarea id="uwagi_potwierdzenia" rows="2" placeholder="Wpisz uwagi..." class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm" oninput="this.value = this.value.toUpperCase()"></textarea>
 
                                 <!-- NOWE PRZYCISKI I SELECT -->
-                                <div class="flex space-x-2 mt-2">
-                                    <button id="manageTemplatesButton" class="text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors">ZARZĄDZAJ SZABLONAMI</button>
-                                    <select id="selectTemplateDropdown" class="text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors w-full no-uppercase">
+                                <div class="flex space-x-2 mt-1">
+                                    <button id="manageTemplatesButton" class="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors">ZARZĄDZAJ SZABLONAMI</button>
+                                    <select id="selectTemplateDropdown" class="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors w-full no-uppercase">
                                         <option value="">WYBIERZ SZABLON...</option>
                                         <!-- Opcje będą dodawane dynamicznie przez JS -->
                                     </select>
@@ -369,15 +356,15 @@
                         <!-- KONIEC ZMIANY -->
 
 
-                        <div id="messageArea" class="h-6 text-sm font-medium text-green-600"></div>
+                        <div id="messageArea" class="h-4 text-xs font-medium text-green-600"></div>
 
-                        <div class="flex space-x-4 pt-2">
-                            <button id="saveButton" class="w-full bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition-colors shadow-lg">ZAPISZ W BAZIE</button>
+                        <div class="flex space-x-4 pt-1">
+                            <button id="saveButton" class="w-full bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition-colors shadow-lg text-sm">ZAPISZ W BAZIE</button>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-4 pt-2">
-                             <button id="printButton" class="w-full bg-pink-600 text-white px-6 py-3 rounded-md hover:bg-pink-700 transition-colors shadow-lg">GENERUJ KOPERTĘ (PDF)</button>
-                             <button id="receiptPrintButton" class="w-full bg-lime-600 text-white px-6 py-3 rounded-md hover:bg-lime-700 transition-colors shadow-lg">GENERUJ POTWIERDZENIE (ZWROTKA)</button>
+                        <div class="grid grid-cols-2 gap-4 pt-1">
+                             <button id="printButton" class="w-full bg-pink-600 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition-colors shadow-lg text-sm">GENERUJ KOPERTĘ (PDF)</button>
+                             <button id="receiptPrintButton" class="w-full bg-lime-600 text-white px-6 py-2 rounded-md hover:bg-lime-700 transition-colors shadow-lg text-sm">GENERUJ POTWIERDZENIE (ZWROTKA)</button>
                         </div>
 
                     </div>
@@ -817,6 +804,15 @@
 
 
         <div id="bulkPrintContainer" style="display: none;"></div>
+
+        <!-- Pasek użytkownika i wylogowanie (przeniesiony na dół) -->
+        <div class="max-w-6xl mx-auto mt-8 mb-4 flex justify-between items-center bg-white p-4 rounded-lg shadow-md">
+            <div>
+                <span class="text-sm text-gray-600">ZALOGOWANO JAKO:</span>
+                <span id="userEmailDisplay" class="font-medium text-gray-900"></span>
+            </div>
+            <button id="logoutButton" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors text-sm">WYLOGUJ</button>
+        </div>
 
     </div>
 
