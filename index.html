@@ -26,7 +26,7 @@
     <!-- Panel Ustawień (bez zmian) -->
     <div id="settings-section-container" class="space-y-6">
         <div class="bg-yellow-50 p-6 rounded-lg shadow-md border-l-4 border-yellow-500">
-            <h2 class="text-2xl font-bold mb-4 text-yellow-800 flex justify-between items-center">
+            <h2 class="text-xl font-bold mb-4 text-yellow-800 flex justify-between items-center">
                 USTAWIENIA DRUKU I POZYCJI
                 <button id="closeSettingsButton" class="text-gray-600 hover:text-gray-900 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
@@ -34,112 +34,112 @@
                     </svg>
                 </button>
             </h2>
-            <div id="settingsMessageArea" class="h-6 text-sm font-medium text-red-600 mb-2"></div>
+            <div id="settingsMessageArea" class="h-6 text-xs font-medium text-red-600 mb-2"></div>
 
 
             <div class="space-y-4">
-                <div class="text-lg font-semibold border-b border-yellow-200 pb-2 mb-2 text-yellow-700 settings-heading">CZCIONKA I SPACING (GLOBALNIE)</div>
+                <div class="text-xs font-semibold border-b border-yellow-200 pb-2 mb-2 text-yellow-700 settings-heading">CZCIONKA I SPACING (GLOBALNIE)</div>
                 <div class="grid grid-cols-3 gap-4">
                     <div class="col-span-1">
                         <label for="fontSize" class="block text-xs font-medium text-gray-700">ROZMIAR (PT)</label>
-                        <input type="number" step="1" min="8" max="24" id="fontSize" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="8" max="24" id="fontSize" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
                     <div class="col-span-1">
                         <label for="lineHeight" class="block text-xs font-medium text-gray-700">INTERLINIA (EM)</label>
-                        <input type="number" step="0.1" min="0.8" max="2.0" id="lineHeight" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="0.1" min="0.8" max="2.0" id="lineHeight" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
                     <div class="col-span-1">
                         <label for="fontWeight" class="block text-xs font-medium text-gray-700">WAGA</label>
-                        <select id="fontWeight" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <select id="fontWeight" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                             <option value="400">NORMALNA</option>
                             <option value="700">POGRUBIONA</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="text-lg font-semibold border-b border-yellow-200 pt-4 pb-2 mb-2 text-yellow-700 settings-heading">POZYCJA NA KOPERCIE (MM)</div>
+                <div class="text-xs font-semibold border-b border-yellow-200 pt-4 pb-2 mb-2 text-yellow-700 settings-heading">POZYCJA NA KOPERCIE (MM)</div>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="col-span-2 font-medium text-sm text-yellow-800">NUMER SPRAWY (MM)</div>
+                    <div class="col-span-2 font-medium text-xs text-yellow-800">NUMER SPRAWY (MM)</div>
                     <div class="col-span-1">
                         <label for="numSprawyTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                        <input type="number" step="1" min="0" max="100" id="numSprawyTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="numSprawyTop" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
                     <div class="col-span-1">
                         <label for="numSprawyLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                        <input type="number" step="1" min="0" max="100" id="numSprawyLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="numSprawyLeft" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
 
-                    <div class="col-span-2 font-medium text-sm text-yellow-800 pt-2">ADRES - POZYCJA CENTRALNA (%)</div>
+                    <div class="col-span-2 font-medium text-xs text-yellow-800 pt-2">ADRES - POZYCJA CENTRALNA (%)</div>
                     <div class="col-span-1">
                         <label for="addressTop" class="block text-xs font-medium text-gray-700">POCZĄTEK BLOKU (%)</label>
-                        <input type="number" step="1" min="0" max="100" id="addressTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="addressTop" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
                     <div class="col-span-1">
                         <label for="addressLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (%)</label>
-                        <input type="number" step="1" min="0" max="100" id="addressLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="addressLeft" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
                 </div>
 
-                <div class="text-lg font-semibold border-b border-yellow-200 pt-4 pb-2 mb-2 text-yellow-700 settings-heading">POZYCJA NA POTWIERDZENIU (MM)</div>
+                <div class="text-xs font-semibold border-b border-yellow-200 pt-4 pb-2 mb-2 text-yellow-700 settings-heading">POZYCJA NA POTWIERDZENIU (MM)</div>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="col-span-2 font-medium text-sm text-yellow-800">ADRESAT (GÓRA ZWROTKI)</div>
+                    <div class="col-span-2 font-medium text-xs text-yellow-800">ADRESAT (GÓRA ZWROTKI)</div>
                     <div class="col-span-1">
                         <label for="recAdresatTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                        <input type="number" step="1" min="0" max="100" id="recAdresatTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="recAdresatTop" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
                     <div class="col-span-1">
                         <label for="recAdresatLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                        <input type="number" step="1" min="0" max="100" id="recAdresatLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="recAdresatLeft" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
 
-                    <div class="col-span-2 font-medium text-sm text-yellow-800 pt-2">ADRES L.1 (LUB PUSTY WIERSZ)</div>
+                    <div class="col-span-2 font-medium text-xs text-yellow-800 pt-2">ADRES L.1 (LUB PUSTY WIERSZ)</div>
                     <div class="col-span-1">
                         <label for="recAdresCz1Top" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                        <input type="number" step="1" min="0" max="100" id="recAdresCz1Top" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="recAdresCz1Top" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
                     <div class="col-span-1">
                         <label for="recAdresCz1Left" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                        <input type="number" step="1" min="0" max="100" id="recAdresCz1Left" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="recAdresCz1Left" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
 
-                    <div class="col-span-2 font-medium text-sm text-yellow-800 pt-2">ADRES L.2</div>
+                    <div class="col-span-2 font-medium text-xs text-yellow-800 pt-2">ADRES L.2</div>
                     <div class="col-span-1">
                         <label for="recAdresCz2Top" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                        <input type="number" step="1" min="0" max="100" id="recAdresCz2Top" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="recAdresCz2Top" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
                     <div class="col-span-1">
                         <label for="recAdresCz2Left" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                        <input type="number" step="1" min="0" max="100" id="recAdresCz2Left" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="recAdresCz2Left" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
 
-                    <div class="col-span-2 font-medium text-sm text-yellow-800 pt-2">KOD POCZTOWY / POCZTA</div>
+                    <div class="col-span-2 font-medium text-xs text-yellow-800 pt-2">KOD POCZTOWY / POCZTA</div>
                     <div class="col-span-1">
                         <label for="recKodPocztaTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                        <input type="number" step="1" min="0" max="100" id="recKodPocztaTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="recKodPocztaTop" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
                     <div class="col-span-1">
                         <label for="recKodPocztaLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                        <input type="number" step="1" min="0" max="100" id="recKodPocztaLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="recKodPocztaLeft" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
 
-                    <div class="col-span-2 font-medium text-sm text-yellow-800 pt-2">NUMER SPRAWY (DÓŁ ZWROTKI)</div>
+                    <div class="col-span-2 font-medium text-xs text-yellow-800 pt-2">NUMER SPRAWY (DÓŁ ZWROTKI)</div>
                     <div class="col-span-1">
                         <label for="recNumSprawyTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                        <input type="number" step="1" min="0" max="100" id="recNumSprawyTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="recNumSprawyTop" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
                     <div class="col-span-1">
                         <label for="recNumSprawyLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                        <input type="number" step="1" min="0" max="100" id="recNumSprawyLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="recNumSprawyLeft" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
 
-                    <div class="col-span-2 font-medium text-sm text-yellow-800 pt-2">UWAGI (DÓŁ ZWROTKI)</div>
+                    <div class="col-span-2 font-medium text-xs text-yellow-800 pt-2">UWAGI (DÓŁ ZWROTKI)</div>
                     <div class="col-span-1">
                         <label for="recUwagiTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                        <input type="number" step="1" min="0" max="250" id="recUwagiTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="250" id="recUwagiTop" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
                     <div class="col-span-1">
                         <label for="recUwagiLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                        <input type="number" step="1" min="0" max="100" id="recUwagiLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                        <input type="number" step="1" min="0" max="100" id="recUwagiLeft" class="mt-1 w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
                     </div>
                 </div>
             </div>
@@ -4336,6 +4336,38 @@
                     }
                 }
             });
+
+
+            // Auto-move logic for adres_cz1 -> adres_cz2 (Koperty)
+            if (inputs.adres_cz1 && inputs.adres_cz2) {
+                inputs.adres_cz1.addEventListener('blur', () => {
+                    if (inputs.adres_cz1.value.trim() !== '' && inputs.adres_cz2.value.trim() === '') {
+                        inputs.adres_cz2.value = inputs.adres_cz1.value;
+                        inputs.adres_cz1.value = '';
+                        updatePreview();
+                    }
+                });
+            }
+
+            // Auto-move logic for adres_cz1 -> adres_cz2 (Odpowiedzi)
+            if (odpowiedzFields.adres_cz1 && odpowiedzFields.adres_cz2) {
+                odpowiedzFields.adres_cz1.addEventListener('blur', () => {
+                    if (odpowiedzFields.adres_cz1.value.trim() !== '' && odpowiedzFields.adres_cz2.value.trim() === '') {
+                        odpowiedzFields.adres_cz2.value = odpowiedzFields.adres_cz1.value;
+                        odpowiedzFields.adres_cz1.value = '';
+                    }
+                });
+            }
+
+            // Auto-move logic for adres_cz1 -> adres_cz2 (Wsparcie)
+            if (supportFields.adres_cz1 && supportFields.adres_cz2) {
+                supportFields.adres_cz1.addEventListener('blur', () => {
+                    if (supportFields.adres_cz1.value.trim() !== '' && supportFields.adres_cz2.value.trim() === '') {
+                        supportFields.adres_cz2.value = supportFields.adres_cz1.value;
+                        supportFields.adres_cz1.value = '';
+                    }
+                });
+            }
 
             if (inputs.kod_pocztowy) {
                 inputs.kod_pocztowy.addEventListener('input', handlePostalCodeInput);
