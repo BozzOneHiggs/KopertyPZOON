@@ -13,6 +13,14 @@
 </head>
 <body class="bg-gray-100 font-sans p-8">
 
+    <!-- PRZYCISK ZGŁASZANIA BŁĘDÓW -->
+    <button id="reportBugButton" class="fixed top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full shadow-lg z-50 text-xs font-bold uppercase hover:bg-red-700 transition-colors flex items-center gap-2 hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        ZGŁOŚ BŁĄD / UWAGI
+    </button>
+
     <div id="overlay" onclick="document.getElementById('toggleSettingsButton').click()"></div>
 
     <!-- Panel Ustawień (bez zmian) -->
@@ -140,29 +148,48 @@
     </div>
 
 
-    <!-- Ekran Logowania (bez zmian) -->
-    <div id="authContainer" class="max-w-md mx-auto bg-white rounded-lg shadow-xl p-8 mt-16">
-        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">LOGOWANIE DO GENERATORA</h2>
+    <!-- Ekran Logowania -->
+    <div id="authContainer" class="min-h-[80vh] flex flex-col items-center justify-center">
+        <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
+            <h2 class="text-2xl font-bold text-center text-gray-900 mb-2">LOGOWANIE DO GENERATORA</h2>
+            <p class="text-sm text-gray-500 text-center mb-8">Witaj z powrotem! Zaloguj się, aby kontynuować.</p>
 
-        <div class="space-y-4">
-            <div>
-                <label for="loginEmail" class="block text-sm font-medium text-gray-700">EMAIL</label>
-                <input type="email" id="loginEmail" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
-            </div>
-            <div>
-                <label for="loginPassword" class="block text-sm font-medium text-gray-700">HASŁO</label>
-                <input type="password" id="loginPassword" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
-            </div>
+            <div class="space-y-6">
+                <div>
+                    <label for="loginEmail" class="block text-xs font-bold text-gray-500 uppercase mb-2">EMAIL</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                            </svg>
+                        </div>
+                        <input type="email" id="loginEmail" placeholder="jan@example.com" class="pl-10 w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-400 no-uppercase">
+                    </div>
+                </div>
 
-            <div id="authMessageArea" class="h-6 text-sm font-medium text-red-600 text-center"></div>
+                <div>
+                    <label for="loginPassword" class="block text-xs font-bold text-gray-500 uppercase mb-2">HASŁO</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <input type="password" id="loginPassword" placeholder="........" class="pl-10 w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-400 no-uppercase">
+                    </div>
+                </div>
 
-            <div class="flex space-x-4 pt-2">
-                <button id="loginButton" class="w-full bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors">ZALOGUJ</button>
-                <button id="registerButton" class="w-full bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-colors">ZAREJESTRUJ</button>
+                <div id="authMessageArea" class="h-6 text-sm font-medium text-red-600 text-center"></div>
+
+                <div class="flex gap-4">
+                    <button id="loginButton" class="flex-1 bg-blue-600 text-white py-2.5 rounded hover:bg-blue-700 transition font-semibold uppercase text-sm shadow-md">ZALOGUJ</button>
+                    <button id="registerButton" class="flex-1 bg-green-600 text-white py-2.5 rounded hover:bg-green-700 transition font-semibold uppercase text-sm shadow-md">ZAREJESTRUJ</button>
+                </div>
             </div>
-            <div class="pt-2">
-                 <button id="anonymousLoginButton" class="w-full bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600 transition-colors text-sm">KONTYNUUJ ANONIMOWO</button>
-            </div>
+        </div>
+        <div class="mt-8 text-sm text-gray-500">
+            <span class="cursor-pointer hover:underline">Pomoc</span> • <span class="cursor-pointer hover:underline">Prywatność</span>
         </div>
     </div>
 
@@ -224,17 +251,8 @@
         </button>
 
 
-        <!-- Pasek użytkownika i wylogowanie (bez zmian) -->
-        <div class="max-w-6xl mx-auto mb-4 flex justify-between items-center bg-white p-4 rounded-lg shadow-md">
-            <div>
-                <span class="text-sm text-gray-600">ZALOGOWANO JAKO:</span>
-                <span id="userEmailDisplay" class="font-medium text-gray-900"></span>
-            </div>
-            <button id="logoutButton" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors text-sm">WYLOGUJ</button>
-        </div>
-
         <!-- NOWA SEKCJA: NAWIGACJA ZAKŁADEK -->
-        <div class="max-w-6xl mx-auto bg-white rounded-t-lg shadow-md">
+        <div class="max-w-6xl mx-auto bg-white rounded-t-lg shadow-md mt-4">
             <nav class="flex border-b border-gray-200">
                 <button id="tabButtonEnvelopes" class="tab-button active">
                     GENERATOR KOPERT
@@ -252,9 +270,8 @@
         <div id="envelopeGeneratorTab" class="">
             <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
 
-                <div id="preview-section" class="order-1 lg:order-1 space-y-4">
-                    <h1 class="text-3xl font-bold text-gray-800 hidden lg:block">GENERATOR KOPERT C6 (162X114MM)</h1>
-                    <div id="preview-container" class="bg-white p-6 rounded-lg shadow-2xl flex justify-center items-center lg:items-start print:shadow-none print:p-0">
+                <div id="preview-section" class="order-1 lg:order-1 space-y-2">
+                    <div id="preview-container" class="bg-white p-4 rounded-lg shadow-2xl flex justify-center items-center lg:items-start print:shadow-none print:p-0">
                         <div id="envelope" class="bg-white p-4 shadow-xl">
                             <div id="previewNumerSprawy" class="absolute" style="left: 15mm; top: 15mm;"></div>
 
@@ -267,61 +284,63 @@
                         </div>
                     </div>
 
+                    <div class="bg-white p-4 rounded-lg shadow-md space-y-2">
+                        <label for="uwagi_for_all" class="block text-xs font-medium text-gray-700">UWAGI (DLA WYDRUKU SERYJNEGO)</label>
+                        <textarea id="uwagi_for_all" rows="2" placeholder="Wpisz uwagi wspólne dla wszystkich zwrotek (nadpisuje uwagi indywidualne)..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm"></textarea>
+                    </div>
+
                     <div class="text-center lg:text-left">
                          <button id="toggleSettingsButton" class="bg-yellow-500 text-white px-6 py-2 rounded-md hover:bg-yellow-600 transition-colors shadow-lg">POKAŻ / UKRYJ USTAWIENIA DRUKU</button>
                     </div>
                 </div>
 
 
-                <div id="controls" class="order-2 lg:order-2 space-y-6">
-                    <h1 class="text-3xl font-bold text-gray-800 block lg:hidden">GENERATOR KOPERT C6 (162X114MM)</h1>
+                <div id="controls" class="order-2 lg:order-2 space-y-3">
 
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h2 class="text-xl font-semibold mb-4">WYSZUKAJ SPRAWĘ (POJEDYNCZO)</h2>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
                         <div class="flex space-x-2">
-                            <input type="text" id="searchNumerSprawy" placeholder="Wpisz numer sprawy..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase">
-                            <button id="searchButton" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">SZUKAJ</button>
+                            <input type="text" id="searchNumerSprawy" placeholder="Wpisz numer sprawy..." class="w-full px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase text-sm">
+                            <button id="searchButton" class="bg-blue-600 text-white px-4 py-1 rounded-md hover:bg-blue-700 transition-colors text-sm">SZUKAJ</button>
                         </div>
                     </div>
 
-                    <div class="bg-white p-6 rounded-lg shadow-md space-y-4" id="envelopeForm">
-                        <h2 class="text-xl font-semibold mb-4">WPROWADŹ DANE</h2>
+                    <div class="bg-white p-4 rounded-lg shadow-md space-y-2" id="envelopeForm">
 
                         <!-- NOWY PRZYCISK KOPIOWANIA ADRESU -->
-                        <button id="copySupportAddressButton" class="w-full bg-cyan-600 text-white px-4 py-2 rounded-md hover:bg-cyan-700 transition-colors text-sm">
+                        <button id="copySupportAddressButton" class="w-full bg-cyan-600 text-white px-4 py-1 rounded-md hover:bg-cyan-700 transition-colors text-xs">
                             SKOPIUJ ADRES Z ZAKŁADKI ZAWIADOMIEŃ
                         </button>
                         <!-- KONIEC NOWEGO PRZYCISKU -->
 
                         <div>
-                            <label for="numer_sprawy" class="block text-sm font-medium text-gray-700">NUMER SPRAWY</label>
-                            <input type="text" id="numer_sprawy" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                            <label for="numer_sprawy" class="block text-xs font-medium text-gray-700">NUMER SPRAWY</label>
+                            <input type="text" id="numer_sprawy" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                         </div>
 
                         <div>
-                            <label for="adresat" class="block text-sm font-medium text-gray-700">ADRESAT</label>
-                            <input type="text" id="adresat" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                            <label for="adresat" class="block text-xs font-medium text-gray-700">ADRESAT</label>
+                            <input type="text" id="adresat" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                         </div>
 
                         <div>
-                            <label for="adres_cz1" class="block text-sm font-medium text-gray-700">ADRES (LINIA 1)</label>
-                            <input type="text" id="adres_cz1" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                            <label for="adres_cz1" class="block text-xs font-medium text-gray-700">ADRES (LINIA 1)</label>
+                            <input type="text" id="adres_cz1" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                         </div>
 
                         <div>
-                            <label for="adres_cz2" class="block text-sm font-medium text-gray-700">ADRES (LINIA 2 - OPCJONALNIE)</label>
-                            <input type="text" id="adres_cz2" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                            <label for="adres_cz2" class="block text-xs font-medium text-gray-700">ADRES (LINIA 2 - OPCJONALNIE)</label>
+                            <input type="text" id="adres_cz2" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                         </div>
 
                         <!-- ZMODYFIKOWANA SEKCJA KODU I POCZTY -->
-                        <div class="grid grid-cols-3 gap-4">
+                        <div class="grid grid-cols-3 gap-2">
                             <div class="col-span-1">
-                                <label for="kod_pocztowy" class="block text-sm font-medium text-gray-700">KOD POCZTOWY</label>
-                                <input type="text" id="kod_pocztowy" placeholder="XX-XXX" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                                <label for="kod_pocztowy" class="block text-xs font-medium text-gray-700">KOD POCZTOWY</label>
+                                <input type="text" id="kod_pocztowy" placeholder="XX-XXX" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                             </div>
                             <div class="col-span-2">
-                                <label for="poczta" class="block text-sm font-medium text-gray-700">POCZTA (WPISZ LUB WYBIERZ)</label>
-                                <input type="text" id="poczta" list="postOfficeList" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                                <label for="poczta" class="block text-xs font-medium text-gray-700">POCZTA (WPISZ LUB WYBIERZ)</label>
+                                <input type="text" id="poczta" list="postOfficeList" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                                 <datalist id="postOfficeList">
                                     <!-- Opcje będą dodawane dynamicznie przez JS -->
                                 </datalist>
@@ -329,10 +348,10 @@
                         </div>
 
                         <!-- NOWY PRZYCISK I KOMUNIKAT DO ZAPISU KODU -->
-                        <div class="flex items-center space-x-2 mt-2">
-                             <button id="savePostOfficeButton" class="w-full bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors text-sm">ZAPISZ PARĘ KOD-POCZTA DO BAZY</button>
+                        <div class="flex items-center space-x-2 mt-1">
+                             <button id="savePostOfficeButton" class="w-full bg-teal-600 text-white px-4 py-1 rounded-md hover:bg-teal-700 transition-colors text-xs">ZAPISZ PARĘ KOD-POCZTA DO BAZY</button>
                         </div>
-                        <div id="postOfficeMessageArea" class="h-6 text-sm font-medium text-green-600 mt-1"></div>
+                        <div id="postOfficeMessageArea" class="h-4 text-xs font-medium text-green-600 mt-1"></div>
                         <!-- KONIEC MODYFIKACJI -->
 
 
@@ -341,20 +360,20 @@
 
                         <!-- NOWE POLE DOTYCZY -->
                         <div>
-                            <label for="dotyczy_potwierdzenia" class="block text-sm font-medium text-gray-700">DOTYCZY (DLA POTWIERDZENIA ODBIORU)</label>
-                            <input type="text" id="dotyczy_potwierdzenia" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" oninput="this.value = this.value.toUpperCase()">
+                            <label for="dotyczy_potwierdzenia" class="block text-xs font-medium text-gray-700">DOTYCZY (DLA POTWIERDZENIA ODBIORU)</label>
+                            <input type="text" id="dotyczy_potwierdzenia" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm" oninput="this.value = this.value.toUpperCase()">
                         </div>
 
                         <!-- ZMIANA: DODANO WRAPPER I PRZYCISKI DO SZABLONÓW -->
                         <div>
-                            <label for="uwagi_potwierdzenia" class="block text-sm font-medium text-gray-700">UWAGI (DLA POTWIERDZENIA ODBIORU)</label>
+                            <label for="uwagi_potwierdzenia" class="block text-xs font-medium text-gray-700">UWAGI (DLA POTWIERDZENIA ODBIORU)</label>
                             <div class="relative">
-                                <textarea id="uwagi_potwierdzenia" rows="3" placeholder="Wpisz uwagi..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" oninput="this.value = this.value.toUpperCase()"></textarea>
+                                <textarea id="uwagi_potwierdzenia" rows="2" placeholder="Wpisz uwagi..." class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm" oninput="this.value = this.value.toUpperCase()"></textarea>
 
                                 <!-- NOWE PRZYCISKI I SELECT -->
-                                <div class="flex space-x-2 mt-2">
-                                    <button id="manageTemplatesButton" class="text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors">ZARZĄDZAJ SZABLONAMI</button>
-                                    <select id="selectTemplateDropdown" class="text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors w-full no-uppercase">
+                                <div class="flex space-x-2 mt-1">
+                                    <button id="manageTemplatesButton" class="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors">ZARZĄDZAJ SZABLONAMI</button>
+                                    <select id="selectTemplateDropdown" class="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors w-full no-uppercase">
                                         <option value="">WYBIERZ SZABLON...</option>
                                         <!-- Opcje będą dodawane dynamicznie przez JS -->
                                     </select>
@@ -364,32 +383,19 @@
                         <!-- KONIEC ZMIANY -->
 
 
-                        <div id="messageArea" class="h-6 text-sm font-medium text-green-600"></div>
+                        <div id="messageArea" class="h-4 text-xs font-medium text-green-600"></div>
 
-                        <div class="flex space-x-4 pt-2">
-                            <button id="saveButton" class="w-full bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition-colors shadow-lg">ZAPISZ W BAZIE</button>
+                        <div class="flex space-x-4 pt-1">
+                            <button id="saveButton" class="w-full bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition-colors shadow-lg text-sm">ZAPISZ W BAZIE</button>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-4 pt-2">
-                             <button id="printButton" class="w-full bg-pink-600 text-white px-6 py-3 rounded-md hover:bg-pink-700 transition-colors shadow-lg">GENERUJ KOPERTĘ (PDF)</button>
-                             <button id="receiptPrintButton" class="w-full bg-lime-600 text-white px-6 py-3 rounded-md hover:bg-lime-700 transition-colors shadow-lg">GENERUJ POTWIERDZENIE (ZWROTKA)</button>
+                        <div class="grid grid-cols-2 gap-4 pt-1">
+                             <button id="printButton" class="w-full bg-pink-600 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition-colors shadow-lg text-sm">GENERUJ KOPERTĘ (PDF)</button>
+                             <button id="receiptPrintButton" class="w-full bg-lime-600 text-white px-6 py-2 rounded-md hover:bg-lime-700 transition-colors shadow-lg text-sm">GENERUJ POTWIERDZENIE (ZWROTKA)</button>
                         </div>
 
                     </div>
 
-                    <div class="bg-white p-6 rounded-lg shadow-md space-y-4">
-                        <h2 class="text-xl font-semibold mb-4">GENEROWANIE WIELU KOPERT</h2>
-                        <div id="bulkMessageArea" class="h-6 text-sm font-medium text-red-600"></div>
-                        <div>
-                            <label for="bulkCaseNumbers" class="block text-sm font-medium text-gray-700">NUMERY SPRAW (JEDEN NUMER NA LINIĘ)</label>
-                            <textarea id="bulkCaseNumbers" rows="5" placeholder="Wpisz numery spraw (np. AB/123/2025)..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 uppercase"></textarea>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-4 pt-2">
-                            <button id="bulkPrintButton" class="w-full bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-700 transition-colors shadow-lg">GENERUJ KOPERTY</button>
-                            <button id="bulkReceiptsPrintButton" class="w-full bg-lime-600 text-white px-6 py-3 rounded-md hover:bg-lime-700 transition-colors shadow-lg">GENERUJ ZWROTKI</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div> <!-- Koniec envelopeGeneratorTab -->
@@ -401,113 +407,103 @@
             <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 mt-4">
 
                 <!-- Kolumna 1, 2, 3: Formularz (60% szerokości) -->
-                <div class="lg:col-span-3 space-y-6"> <!-- ZMIANA: lg:col-span-2 na lg:col-span-3 -->
-                    <div class="bg-white p-6 rounded-lg shadow-md space-y-4" id="supportForm">
-                        <h2 class="text-2xl font-bold text-gray-800">WNIOSEK O USTALENIE POZIOMU WSPARCIA</h2>
-                        <h3 class="text-xl font-semibold mb-4">WPROWADŹ DANE</h3>
+                <div class="lg:col-span-3 space-y-3"> <!-- ZMIANA: lg:col-span-2 na lg:col-span-3 -->
+                    <div class="bg-white p-4 rounded-lg shadow-md space-y-2" id="supportForm">
+                        <h2 class="text-lg font-bold text-gray-800">WNIOSEK O USTALENIE POZIOMU WSPARCIA</h2>
 
-                        <div id="wsparcieMessageArea" class="h-6 text-sm font-medium text-green-600"></div>
+                        <div id="wsparcieMessageArea" class="h-4 text-xs font-medium text-green-600"></div>
 
                         <!-- Wyszukiwanie -->
-                        <div class="bg-gray-50 p-4 rounded-md space-y-4">
-                            <!--
-                              ================================================================================
-                              POPRAWKA 1: Wyrównanie pól wyszukiwania
-                              Zmieniono `items-start` na `items-end` w poniższym gridzie.
-                              Wyrównuje to oba bloki wyszukiwania do ich dolnej krawędzi, dzięki czemu
-                              pola input i przyciski znajdą się w jednej linii, niezależnie od tego,
-                              czy etykieta nad nimi zajmuje jedną czy dwie linie.
-                              ================================================================================
-                            -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
+                        <div class="bg-gray-50 p-2 rounded-md space-y-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-end">
                                 <div>
-                                    <label for="wsparcie_numer_orzeczenia" class="block text-sm font-medium text-gray-700">NUMER ORZECZENIA (DO WYSZUKANIA ADRESU)</label>
+                                    <label for="wsparcie_numer_orzeczenia" class="block text-xs font-medium text-gray-700">NUMER ORZECZENIA (DO WYSZUKANIA ADRESU)</label>
                                     <div class="flex space-x-2">
-                                        <input type="text" id="wsparcie_numer_orzeczenia" placeholder="Wpisz numer sprawy z bazy kopert..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
-                                        <button id="searchByOrzeczenieButton" class="mt-1 bg-cyan-600 text-white px-4 py-2 rounded-md hover:bg-cyan-700 transition-colors whitespace-nowrap">SZUKAJ ADRESU</button>
+                                        <input type="text" id="wsparcie_numer_orzeczenia" placeholder="Wpisz numer sprawy z bazy kopert..." class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
+                                        <button id="searchByOrzeczenieButton" class="bg-cyan-600 text-white px-4 py-1 rounded-md hover:bg-cyan-700 transition-colors whitespace-nowrap text-sm">SZUKAJ ADRESU</button>
                                     </div>
                                 </div>
                                 <div>
-                                    <label for="wsparcie_numer_sprawy" class="block text-sm font-medium text-gray-700">NUMER SPRAWY WSPARCIA</label>
+                                    <label for="wsparcie_numer_sprawy" class="block text-xs font-medium text-gray-700">NUMER SPRAWY WSPARCIA</label>
                                     <div class="flex space-x-2">
-                                        <input type="text" id="wsparcie_numer_sprawy" placeholder="Wpisz numer sprawy wsparcia..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
-                                        <button id="searchBySprawaWsparcieButton" class="mt-1 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">WCZYTAJ</button>
+                                        <input type="text" id="wsparcie_numer_sprawy" placeholder="Wpisz numer sprawy wsparcia..." class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
+                                        <button id="searchBySprawaWsparcieButton" class="bg-blue-600 text-white px-4 py-1 rounded-md hover:bg-blue-700 transition-colors text-sm">WCZYTAJ</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Dane do pisma -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                             <div>
-                                <label for="wsparcie_data_pisma" class="block text-sm font-medium text-gray-700">DATA PISMA</label>
-                                <input type="date" id="wsparcie_data_pisma" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <label for="wsparcie_data_pisma" class="block text-xs font-medium text-gray-700">DATA PISMA</label>
+                                <input type="date" id="wsparcie_data_pisma" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm">
                             </div>
                             <div>
-                                <label for="wsparcie_data_wniosku" class="block text-sm font-medium text-gray-700">DATA WNIOSKU</LAbel>
-                                <input type="date" id="wsparcie_data_wniosku" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <label for="wsparcie_data_wniosku" class="block text-xs font-medium text-gray-700">DATA WNIOSKU</LAbel>
+                                <input type="date" id="wsparcie_data_wniosku" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm">
                             </div>
                         </div>
 
                         <!-- Dane Osoby -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
                              <div class="md:col-span-1">
-                                <label for="wsparcie_pan_pani" class="block text-sm font-medium text-gray-700">ZWROT (PANA/PANI)</label>
-                                <select id="wsparcie_pan_pani" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="wsparcie_pan_pani" class="block text-xs font-medium text-gray-700">ZWROT (PANA/PANI)</label>
+                                <select id="wsparcie_pan_pani" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                                     <option value="Pana">Pana</option>
                                     <option value="Pani">Pani</option>
                                 </select>
                             </div>
                             <div class="md:col-span-2">
-                                <label for="wsparcie_imie_nazwisko_odmiana" class="block text-sm font-medium text-gray-700">IMIĘ I NAZWISKO (ODMIENIONE)</label>
-                                <input type="text" id="wsparcie_imie_nazwisko_odmiana" placeholder="Np. ANNY KOWALSKIEJ" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="wsparcie_imie_nazwisko_odmiana" class="block text-xs font-medium text-gray-700">IMIĘ I NAZWISKO (ODMIENIONE)</label>
+                                <input type="text" id="wsparcie_imie_nazwisko_odmiana" placeholder="Np. ANNY KOWALSKIEJ" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                             </div>
                         </div>
 
-                        <hr class="my-4">
+                        <hr class="my-2">
 
-                        <h3 class="text-lg font-semibold mb-2">ADRESAT (DO "OTRZYMUJĄ")</h3>
+                        <h3 class="text-sm font-semibold mb-1">ADRESAT (DO "OTRZYMUJĄ")</h3>
 
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
                             <div class="md:col-span-1">
-                                <label for="wsparcie_pan_pani_2" class="block text-sm font-medium text-gray-700">ZWROT (PAN/PANI)</label>
-                                <select id="wsparcie_pan_pani_2" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="wsparcie_pan_pani_2" class="block text-xs font-medium text-gray-700">ZWROT (PAN/PANI)</label>
+                                <select id="wsparcie_pan_pani_2" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                                     <option value="Pan">Pan</option>
                                     <option value="Pani">Pani</option>
                                 </select>
                             </div>
                              <div class="md:col-span-2">
-                                <label for="wsparcie_imie_nazwisko" class="block text-sm font-medium text-gray-700">IMIĘ I NAZWISKO (MIANOWNIK)</label>
-                                <input type="text" id="wsparcie_imie_nazwisko" placeholder="Np. ANNA KOWALSKA" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="wsparcie_imie_nazwisko" class="block text-xs font-medium text-gray-700">IMIĘ I NAZWISKO (MIANOWNIK)</label>
+                                <input type="text" id="wsparcie_imie_nazwisko" placeholder="Np. ANNA KOWALSKA" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                             </div>
                         </div>
 
                         <div>
-                            <label for="wsparcie_adres_cz1" class="block text-sm font-medium text-gray-700">ADRES (LINIA 1)</label>
-                            <input type="text" id="wsparcie_adres_cz1" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                            <label for="wsparcie_adres_cz1" class="block text-xs font-medium text-gray-700">ADRES (LINIA 1)</label>
+                            <input type="text" id="wsparcie_adres_cz1" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                         </div>
 
                         <div>
-                            <label for="wsparcie_adres_cz2" class="block text-sm font-medium text-gray-700">ADRES (LINIA 2 - OPCJONALNIE)</label>
-                            <input type="text" id="wsparcie_adres_cz2" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                            <label for="wsparcie_adres_cz2" class="block text-xs font-medium text-gray-700">ADRES (LINIA 2 - OPCJONALNIE)</label>
+                            <input type="text" id="wsparcie_adres_cz2" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                         </div>
 
-                        <div class="grid grid-cols-3 gap-4">
+                        <div class="grid grid-cols-3 gap-2">
                             <div class="col-span-1">
-                                <label for="wsparcie_kod_pocztowy" class="block text-sm font-medium text-gray-700">KOD POCZTOWY</label>
-                                <input type="text" id="wsparcie_kod_pocztowy" placeholder="XX-XXX" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="wsparcie_kod_pocztowy" class="block text-xs font-medium text-gray-700">KOD POCZTOWY</label>
+                                <input type="text" id="wsparcie_kod_pocztowy" placeholder="XX-XXX" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                             </div>
                             <div class="col-span-2">
-                                <label for="wsparcie_poczta" class="block text-sm font-medium text-gray-700">POCZTA</label>
-                                <input type="text" id="wsparcie_poczta" list="supportPostOfficeList" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="wsparcie_poczta" class="block text-xs font-medium text-gray-700">POCZTA</label>
+                                <input type="text" id="wsparcie_poczta" list="supportPostOfficeList" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                             </div>
                         </div>
 
                     </div>
 
                     <!-- NOWA SEKCJA: EDYTOR PODSTAW PRAWNYCH -->
-                    <div class="bg-white p-6 rounded-lg shadow-md space-y-4">
-                        <button id="toggleLegalBasisEditorButton" class="w-full text-left text-xl font-semibold text-gray-800 flex justify-between items-center">
+                    <div class="bg-white p-4 rounded-lg shadow-md space-y-2">
+                        <button id="toggleLegalBasisEditorButton" class="w-full text-left text-sm font-semibold text-gray-800 flex justify-between items-center">
                             <span>EDYTOR PODSTAW PRAWNYCH</span>
                             <svg id="legalBasisChevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 transition-transform">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -559,41 +555,41 @@
                             </div>
 
                             <!-- PRZYCISK DODAWANIA -->
-                            <button id="addAttachmentButton" class="w-full bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors text-sm font-medium mt-2">
+                            <button id="addAttachmentButton" class="w-full bg-gray-200 text-gray-700 px-4 py-1 rounded-md hover:bg-gray-300 transition-colors text-xs font-medium mt-2">
                                 + DODAJ ZAŁĄCZNIK
                             </button>
 
                             <!-- ============================================= -->
                             <!-- === NOWA SEKCJA EDYCJI SZABLONÓW ZAŁĄCZNIKÓW === -->
                             <!-- ============================================= -->
-                            <div class="pt-4 mt-4 border-t">
-                                <button id="toggleAttachmentEditorButton" class="w-full text-left text-sm font-semibold text-gray-700 flex justify-between items-center">
+                            <div class="pt-2 mt-2 border-t">
+                                <button id="toggleAttachmentEditorButton" class="w-full text-left text-xs font-semibold text-gray-700 flex justify-between items-center">
                                     <span>ZARZĄDZAJ SZABLONAMI ZAŁĄCZNIKÓW</span>
                                     <svg id="attachmentEditorChevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 transition-transform">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </button>
 
-                                <div id="attachmentEditor" class="hidden space-y-4 pt-4">
-                                    <div id="attachmentTemplateMessageArea" class="h-6 text-sm font-medium text-red-600 text-center mb-2"></div>
+                                <div id="attachmentEditor" class="hidden space-y-2 pt-2">
+                                    <div id="attachmentTemplateMessageArea" class="h-4 text-xs font-medium text-red-600 text-center mb-1"></div>
 
                                     <!-- Formularz dodawania/edycji -->
                                     <div class="space-y-2">
                                         <input type="hidden" id="attachmentTemplateEditId"> <!-- Do śledzenia edytowanego szablonu -->
                                         <div>
                                             <label for="attachmentTemplateNameInput" class="block text-xs font-medium text-gray-700">NAZWA SZABLONU</label>
-                                            <input type="text" id="attachmentTemplateNameInput" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                            <input type="text" id="attachmentTemplateNameInput" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                                         </div>
                                         <div class="flex space-x-2">
-                                            <button id="saveAttachmentTemplateButton" class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-sm">ZAPISZ</button>
-                                            <button id="clearAttachmentTemplateFormButton" class="w-auto bg-gray-300 text-gray-700 px-3 py-2 rounded-md hover:bg-gray-400 text-sm">WYCZYŚĆ</button>
+                                            <button id="saveAttachmentTemplateButton" class="w-full bg-blue-600 text-white px-4 py-1 rounded-md hover:bg-blue-700 transition-colors text-sm">ZAPISZ</button>
+                                            <button id="clearAttachmentTemplateFormButton" class="w-auto bg-gray-300 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-400 text-sm">WYCZYŚĆ</button>
                                         </div>
                                     </div>
 
                                     <!-- Lista istniejących szablonów -->
-                                    <h3 class="text-sm font-semibold pt-2 border-t">ISTNIEJĄCE SZABLONY</h3>
-                                    <div id="attachmentTemplateList" class="space-y-2 max-h-72 overflow-y-auto border p-2 rounded-md bg-gray-50">
-                                         <p class="text-gray-500 text-sm">ŁADOWANIE SZABLONÓW...</p>
+                                    <h3 class="text-xs font-semibold pt-1 border-t">ISTNIEJĄCE SZABLONY</h3>
+                                    <div id="attachmentTemplateList" class="space-y-1 max-h-72 overflow-y-auto border p-2 rounded-md bg-gray-50 text-xs">
+                                         <p class="text-gray-500">ŁADOWANIE SZABLONÓW...</p>
                                     </div>
                                 </div>
                             </div>
@@ -604,17 +600,17 @@
                         </div>
                     </div>
 
-                     <div class="bg-white p-6 rounded-lg shadow-md space-y-4">
-                        <h2 class="text-xl font-semibold mb-4">AKCJE</h2>
-                        <div class="space-y-3">
+                     <div class="bg-white p-4 rounded-lg shadow-md space-y-2">
+                        <h2 class="text-lg font-bold text-gray-800 mb-2">AKCJE</h2>
+                        <div class="space-y-2">
                             <!-- NOWY PRZYCISK CZYSZCZENIA -->
                             <button id="newSupportApplicationButton" class="w-full bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600 transition-colors shadow-lg text-sm">
                                 NOWE ZAWIADOMIENIE (WYCZYŚĆ FORMULARZ)
                             </button>
                             <!-- KONIEC NOWEGO PRZYCISKU -->
 
-                            <button id="saveWsparcieButton" class="w-full bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition-colors shadow-lg">ZAPISZ W BAZIE</button>
-                            <button id="generateWsparciePdfButton" class="w-full bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-colors shadow-lg">GENERUJ PDF ZAWIADOMIENIA</button>
+                            <button id="saveWsparcieButton" class="w-full bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition-colors shadow-lg text-sm">ZAPISZ W BAZIE</button>
+                            <button id="generateWsparciePdfButton" class="w-full bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors shadow-lg text-sm">GENERUJ PDF ZAWIADOMIENIA</button>
                         </div>
                     </div>
 
@@ -626,89 +622,88 @@
         <div id="responseApplicationTab" class="hidden">
             <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 mt-4">
 
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="bg-white p-6 rounded-lg shadow-md space-y-4" id="responseForm">
-                        <h2 class="text-2xl font-bold text-gray-800">ODPOWIEDŹ NA WNIOSEK O UDOSTĘPNIENIE DANYCH</h2>
-                        <h3 class="text-xl font-semibold mb-4">WPROWADŹ DANE</h3>
+                <div class="lg:col-span-5 space-y-3">
+                    <div class="bg-white p-4 rounded-lg shadow-md space-y-2" id="responseForm">
+                        <h2 class="text-lg font-bold text-gray-800">ODPOWIEDŹ NA WNIOSEK O UDOSTĘPNIENIE DANYCH</h2>
 
-                        <div id="odpowiedzMessageArea" class="h-6 text-sm font-medium text-green-600"></div>
+                        <div id="odpowiedzMessageArea" class="h-4 text-xs font-medium text-green-600"></div>
 
-                        <div class="bg-gray-50 p-4 rounded-md space-y-4">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
+                        <div class="bg-gray-50 p-2 rounded-md space-y-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-end">
                                 <div>
-                                    <label for="odp_numer_orzeczenia_search" class="block text-sm font-medium text-gray-700">NUMER ORZECZENIA (DO WYSZUKANIA ADRESU)</label>
+                                    <label for="odp_numer_orzeczenia_search" class="block text-xs font-medium text-gray-700">NUMER ORZECZENIA (DO WYSZUKANIA ADRESU)</label>
                                     <div class="flex space-x-2">
-                                        <input type="text" id="odp_numer_orzeczenia_search" placeholder="Wpisz numer sprawy z bazy kopert..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
-                                        <button id="searchByOrzeczenieButton" class="mt-1 bg-cyan-600 text-white px-4 py-2 rounded-md hover:bg-cyan-700 transition-colors whitespace-nowrap">SZUKAJ ADRESU</button>
+                                        <input type="text" id="odp_numer_orzeczenia_search" placeholder="Wpisz numer sprawy z bazy kopert..." class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
+                                        <button id="searchByOrzeczenieButton" class="bg-cyan-600 text-white px-4 py-1 rounded-md hover:bg-cyan-700 transition-colors whitespace-nowrap text-sm">SZUKAJ ADRESU</button>
                                     </div>
                                 </div>
                                 <div>
-                                    <label for="odp_numer_sprawy" class="block text-sm font-medium text-gray-700">NUMER SPRAWY (ODPOWIEDZI)</label>
+                                    <label for="odp_numer_sprawy" class="block text-xs font-medium text-gray-700">NUMER SPRAWY (ODPOWIEDZI)</label>
                                     <div class="flex space-x-2">
-                                        <input type="text" id="odp_numer_sprawy" placeholder="Wpisz numer sprawy odpowiedzi..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
-                                        <button id="searchBySprawaOdpowiedzButton" class="mt-1 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">WCZYTAJ</button>
+                                        <input type="text" id="odp_numer_sprawy" placeholder="Wpisz numer sprawy odpowiedzi..." class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
+                                        <button id="searchBySprawaOdpowiedzButton" class="bg-blue-600 text-white px-4 py-1 rounded-md hover:bg-blue-700 transition-colors text-sm">WCZYTAJ</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <h3 class="text-lg font-semibold mb-2 pt-4 border-t">DANE DOKUMENTU</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <h3 class="text-sm font-semibold mb-1 pt-2 border-t">DANE DOKUMENTU</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
                             <div>
-                                <label for="odp_data_pisma" class="block text-sm font-medium text-gray-700">DATA PISMA {DATA_PISMA}</label>
-                                <input type="date" id="odp_data_pisma" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="odp_data_pisma" class="block text-xs font-medium text-gray-700">DATA PISMA {DATA_PISMA}</label>
+                                <input type="date" id="odp_data_pisma" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                             </div>
                             <div>
-                                <label for="odp_data_wniosku" class="block text-sm font-medium text-gray-700">DATA WNIOSKU {DATA_WNIOSKU}</label>
-                                <input type="date" id="odp_data_wniosku" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="odp_data_wniosku" class="block text-xs font-medium text-gray-700">DATA WNIOSKU {DATA_WNIOSKU}</label>
+                                <input type="date" id="odp_data_wniosku" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                             </div>
                             <div>
-                                <label for="odp_data_wplywu" class="block text-sm font-medium text-gray-700">DATA WPŁYWU {DATA_WPŁYWU}</label>
-                                <input type="date" id="odp_data_wplywu" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="odp_data_wplywu" class="block text-xs font-medium text-gray-700">DATA WPŁYWU {DATA_WPŁYWU}</label>
+                                <input type="date" id="odp_data_wplywu" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                             </div>
                         </div>
                         <div>
-                            <label for="odp_numer_wniosku" class="block text-sm font-medium text-gray-700">NUMER WNIOSKU {NUMER_WNIOSKU}</label>
-                            <input type="text" id="odp_numer_wniosku" placeholder="Np. WN/123/2025" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                            <label for="odp_numer_wniosku" class="block text-xs font-medium text-gray-700">NUMER WNIOSKU {NUMER_WNIOSKU}</label>
+                            <input type="text" id="odp_numer_wniosku" placeholder="Np. WN/123/2025" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                         </div>
 
 
-                        <h3 class="text-lg font-semibold mb-2 pt-4 border-t">ADRESAT (NA LIŚCIE)</h3>
-                        <div class="flex space-x-2 mb-2">
-                            <button id="manageInstitutionAddressesButton" class="text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors w-full">ZARZĄDZAJ ADRESAMI</button>
-                            <select id="selectInstitutionAddressDropdown" class="text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors w-full no-uppercase">
+                        <h3 class="text-sm font-semibold mb-1 pt-2 border-t">ADRESAT (NA LIŚCIE)</h3>
+                        <div class="flex space-x-2 mb-1">
+                            <button id="manageInstitutionAddressesButton" class="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors w-full">ZARZĄDZAJ ADRESAMI</button>
+                            <select id="selectInstitutionAddressDropdown" class="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 transition-colors w-full no-uppercase text-sm">
                                 <option value="">WYBIERZ ZAPISANY ADRES...</option>
                                 <!-- Opcje będą dodawane dynamicznie przez JS -->
                             </select>
                         </div>
                          <div>
-                            <label for="odp_adresat" class="block text-sm font-medium text-gray-700">ADRESAT {ADRESAT}</label>
-                            <input type="text" id="odp_adresat" placeholder="Np. SĄD REJONOWY W..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                            <label for="odp_adresat" class="block text-xs font-medium text-gray-700">ADRESAT {ADRESAT}</label>
+                            <input type="text" id="odp_adresat" placeholder="Np. SĄD REJONOWY W..." class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                         </div>
                         <div>
-                            <label for="odp_adres_cz1" class="block text-sm font-medium text-gray-700">ADRES (LINIA 1) {ADRES_CZ1}</label>
-                            <input type="text" id="odp_adres_cz1" placeholder="Np. UL. KOŚCIUSZKI 10" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                            <label for="odp_adres_cz1" class="block text-xs font-medium text-gray-700">ADRES (LINIA 1) {ADRES_CZ1}</label>
+                            <input type="text" id="odp_adres_cz1" placeholder="Np. UL. KOŚCIUSZKI 10" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                         </div>
                         <div>
-                            <label for="odp_adres_cz2" class="block text-sm font-medium text-gray-700">ADRES (LINIA 2) {ADRES_CZ2}</label>
-                            <input type="text" id="odp_adres_cz2" placeholder="Opcjonalnie" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                            <label for="odp_adres_cz2" class="block text-xs font-medium text-gray-700">ADRES (LINIA 2) {ADRES_CZ2}</label>
+                            <input type="text" id="odp_adres_cz2" placeholder="Opcjonalnie" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                         </div>
-                        <div class="grid grid-cols-3 gap-4">
+                        <div class="grid grid-cols-3 gap-2">
                             <div class="col-span-1">
-                                <label for="odp_kod_pocztowy" class="block text-sm font-medium text-gray-700">KOD POCZTOWY {KOD_POCZTOWY}</label>
-                                <input type="text" id="odp_kod_pocztowy" placeholder="XX-XXX" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="odp_kod_pocztowy" class="block text-xs font-medium text-gray-700">KOD POCZTOWY {KOD_POCZTOWY}</label>
+                                <input type="text" id="odp_kod_pocztowy" placeholder="XX-XXX" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                             </div>
                             <div class="col-span-2">
-                                <label for="odp_poczta" class="block text-sm font-medium text-gray-700">POCZTA {POCZTA}</label>
-                                <input type="text" id="odp_poczta" list="supportPostOfficeList" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="odp_poczta" class="block text-xs font-medium text-gray-700">POCZTA {POCZTA}</label>
+                                <input type="text" id="odp_poczta" list="supportPostOfficeList" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                             </div>
                         </div>
 
-                        <h3 class="text-lg font-semibold mb-2 pt-4 border-t">DANE OSOBY, KTÓREJ DOTYCZY WNIOSEK</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <h3 class="text-sm font-semibold mb-1 pt-2 border-t">DANE OSOBY, KTÓREJ DOTYCZY WNIOSEK</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
                              <div class="md:col-span-1">
-                                <label for="odp_pani_pana" class="block text-sm font-medium text-gray-700">PANI / PANA {PANI_PANA}</label>
-                                <select id="odp_pani_pana" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="odp_pani_pana" class="block text-xs font-medium text-gray-700">PANI / PANA {PANI_PANA}</label>
+                                <select id="odp_pani_pana" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                                     <option value="Pana">Pana</option>
                                     <option value="Pani">Pani</option>
                                     <option value="małoletniego">małoletniego</option>
@@ -716,63 +711,63 @@
                                 </select>
                             </div>
                             <div class="md:col-span-2">
-                                <label for="odp_osoby" class="block text-sm font-medium text-gray-700">OSOBA (ODMIENIONE) {OSOBY}</label>
-                                <input type="text" id="odp_osoby" placeholder="Np. ANNY KOWALSKIEJ" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="odp_osoby" class="block text-xs font-medium text-gray-700">OSOBA (ODMIENIONE) {OSOBY}</label>
+                                <input type="text" id="odp_osoby" placeholder="Np. ANNY KOWALSKIEJ" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                             </div>
                         </div>
                         <div>
-                             <label for="odp_pesel" class="block text-sm font-medium text-gray-700">PESEL {PESEL}</label>
-                             <input type="text" id="odp_pesel" placeholder="XXXXXXXXXXX" maxlength="11" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                             <label for="odp_pesel" class="block text-xs font-medium text-gray-700">PESEL {PESEL}</label>
+                             <input type="text" id="odp_pesel" placeholder="XXXXXXXXXXX" maxlength="11" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                         </div>
 
-                        <h3 class="text-lg font-semibold mb-2 pt-4 border-t">DANE ORZECZENIA</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <h3 class="text-sm font-semibold mb-1 pt-2 border-t">DANE ORZECZENIA</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                             <div>
-                                <label for="odp_stopien_czy_niepelnosprawnosc" class="block text-sm font-medium text-gray-700">{STOPIEŃ_CZY_NIEPEŁNOSPRAWNOŚĆ}</label>
-                                <select id="odp_stopien_czy_niepelnosprawnosc" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="odp_stopien_czy_niepelnosprawnosc" class="block text-xs font-medium text-gray-700">{STOPIEŃ_CZY_NIEPEŁNOSPRAWNOŚĆ}</label>
+                                <select id="odp_stopien_czy_niepelnosprawnosc" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                                     <option value="stopniu niepełnosprawności">stopniu niepełnosprawności</option>
                                     <option value="niepełnosprawności">niepełnosprawności</option>
                                 </select>
                             </div>
                             <div>
-                                <label for="odp_numer_orzeczenia" class="block text-sm font-medium text-gray-700">NUMER ORZECZENIA {NUMER_ORZECZENIA}</label>
-                                <input type="text" id="odp_numer_orzeczenia" placeholder="Np. PCPR/123/2025" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase">
+                                <label for="odp_numer_orzeczenia" class="block text-xs font-medium text-gray-700">NUMER ORZECZENIA {NUMER_ORZECZENIA}</label>
+                                <input type="text" id="odp_numer_orzeczenia" placeholder="Np. PCPR/123/2025" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 uppercase text-sm">
                             </div>
                              <div>
-                                <label for="odp_data_orzeczenia" class="block text-sm font-medium text-gray-700">DATA ORZECZENIA {DATA_ORZECZENIA}</label>
-                                <input type="date" id="odp_data_orzeczenia" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="odp_data_orzeczenia" class="block text-xs font-medium text-gray-700">DATA ORZECZENIA {DATA_ORZECZENIA}</label>
+                                <input type="date" id="odp_data_orzeczenia" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                             </div>
                             <div>
-                                <label for="odp_data_prawomocnosci" class="block text-sm font-medium text-gray-700">DATA PRAWOMOCNOŚCI {DATA_PRAWOMOCNOŚCI}</label>
-                                <input type="date" id="odp_data_prawomocnosci" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                <label for="odp_data_prawomocnosci" class="block text-xs font-medium text-gray-700">DATA PRAWOMOCNOŚCI {DATA_PRAWOMOCNOŚCI}</label>
+                                <input type="date" id="odp_data_prawomocnosci" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                             </div>
                             <!-- NOWE POLA DLA ODWOŁANIA -->
-                            <div class="col-span-2 flex items-center space-x-2 mt-4">
+                            <div class="col-span-2 flex items-center space-x-2 mt-2">
                                 <input type="checkbox" id="odp_odwolanie" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                                <label for="odp_odwolanie" class="text-sm font-medium text-gray-700">ZŁOŻONO ODWOŁANIE</label>
+                                <label for="odp_odwolanie" class="text-xs font-medium text-gray-700">ZŁOŻONO ODWOŁANIE</label>
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 col-span-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 col-span-2">
                                 <div>
-                                    <label for="odp_data_odwolania" class="block text-sm font-medium text-gray-700">DATA ZŁOŻENIA ODWOŁANIA</label>
-                                    <input type="date" id="odp_data_odwolania" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                    <label for="odp_data_odwolania" class="block text-xs font-medium text-gray-700">DATA ZŁOŻENIA ODWOŁANIA</label>
+                                    <input type="date" id="odp_data_odwolania" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                                 </div>
                                 <div>
-                                    <label for="odp_data_wyslania_odwolania" class="block text-sm font-medium text-gray-700">DATA WYSŁANIA ODWOŁANIA</label>
-                                    <input type="date" id="odp_data_wyslania_odwolania" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                                    <label for="odp_data_wyslania_odwolania" class="block text-xs font-medium text-gray-700">DATA WYSŁANIA ODWOŁANIA</label>
+                                    <input type="date" id="odp_data_wyslania_odwolania" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                                 </div>
                             </div>
                         </div>
 
-                        <h3 class="text-lg font-semibold mb-2 pt-4 border-t">PODSTAWA PRAWNA</h3>
+                        <h3 class="text-sm font-semibold mb-1 pt-2 border-t">PODSTAWA PRAWNA</h3>
                          <div>
-                            <label for="odp_podstawa_prawna" class="block text-sm font-medium text-gray-700">PODSTAWA PRAWNA {PODSTAWA_PRAWNA}</label>
-                            <select id="odp_podstawa_prawna" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase">
+                            <label for="odp_podstawa_prawna" class="block text-xs font-medium text-gray-700">PODSTAWA PRAWNA {PODSTAWA_PRAWNA}</label>
+                            <select id="odp_podstawa_prawna" class="w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 no-uppercase text-sm">
                                 <option value="">-- WYBIERZ PODSTAWĘ PRAWNĄ --</option>
                             </select>
                         </div>
 
-                        <div class="pt-4 mt-4 border-t">
-                            <button id="toggleLegalBasisTemplateEditorButton" class="w-full text-left text-sm font-semibold text-gray-700 flex justify-between items-center">
+                        <div class="pt-2 mt-2 border-t">
+                            <button id="toggleLegalBasisTemplateEditorButton" class="w-full text-left text-xs font-semibold text-gray-700 flex justify-between items-center">
                                 <span>ZARZĄDZAJ SZABLONAMI PODSTAW PRAWNYCH</span>
                                 <svg id="legalBasisTemplateChevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 transition-transform">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -825,6 +820,15 @@
 
 
         <div id="bulkPrintContainer" style="display: none;"></div>
+
+        <!-- Pasek użytkownika i wylogowanie (przeniesiony na dół) -->
+        <div class="max-w-6xl mx-auto mt-8 mb-4 flex justify-between items-center bg-white p-4 rounded-lg shadow-md">
+            <div>
+                <span class="text-sm text-gray-600">ZALOGOWANO JAKO:</span>
+                <span id="userEmailDisplay" class="font-medium text-gray-900"></span>
+            </div>
+            <button id="logoutButton" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors text-sm">WYLOGUJ</button>
+        </div>
 
     </div>
 
@@ -912,6 +916,32 @@
         <button id="closeInstitutionAddressModalButton" class="mt-6 w-full bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600 transition-colors">ZAMKIJ</button>
     </div>
     <!-- KONIEC MODALA ADRESÓW -->
+
+    <!-- MODAL ZGŁASZANIA BŁĘDÓW -->
+    <div id="bugReportModalOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"></div>
+    <div id="bugReportModal" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-xl z-[60] w-full max-w-lg hidden">
+        <div class="flex justify-between items-center mb-4">
+             <h2 class="text-xl font-bold text-gray-800">ZGŁOŚ BŁĄD LUB UWAGĘ</h2>
+             <button id="closeBugReportModalButton" class="text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+             </button>
+        </div>
+
+        <div id="bugReportMessageArea" class="h-6 text-sm font-medium text-center mb-2"></div>
+
+        <div class="space-y-4">
+            <div>
+                <label for="bugReportContent" class="block text-sm font-medium text-gray-700">TREŚĆ ZGŁOSZENIA</label>
+                <textarea id="bugReportContent" rows="6" placeholder="Opisz błąd lub sugestię..." class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 no-uppercase text-sm"></textarea>
+            </div>
+
+            <button id="sendBugReportButton" class="w-full bg-red-600 text-white px-6 py-3 rounded-md hover:bg-red-700 transition-colors font-bold shadow-md">WYŚLIJ ZGŁOSZENIE</button>
+            <p class="text-xs text-gray-500 text-center mt-2">Zgłoszenie zostanie wysłane na adres jammz2607@gmail.com oraz zapisane w bazie.</p>
+        </div>
+    </div>
+    <!-- KONIEC MODALA ZGŁASZANIA BŁĘDÓW -->
 
     <!-- NOWA: LISTA SUGESTII DLA ZAŁĄCZNIKÓW (UKRYTA) -->
     <datalist id="attachmentsDatalist"></datalist>
@@ -1040,6 +1070,7 @@
         let odpowiedziCollection; // NOWA: Kolekcja dla odpowiedzi
         let legalBasisTemplatesCollection; // NOWA: Kolekcja dla szablonów podstaw prawnych
         let institutionAddressesCollection; // NOWA: Kolekcja dla adresów instytucji
+        let bugReportsCollection; // NOWA: Kolekcja zgłoszeń błędów
 
         let templatesSnapshotUnsubscribe = null;
         let attachmentsSnapshotUnsubscribe = null;
@@ -1177,7 +1208,7 @@
         const loginPassword = document.getElementById('loginPassword');
         const loginButton = document.getElementById('loginButton');
         const registerButton = document.getElementById('registerButton');
-        const anonymousLoginButton = document.getElementById('anonymousLoginButton');
+        // anonymousLoginButton removed
         const logoutButton = document.getElementById('logoutButton');
         const authMessageArea = document.getElementById('authMessageArea');
         const userEmailDisplay = document.getElementById('userEmailDisplay');
@@ -1340,6 +1371,14 @@
         const clearAttachmentTemplateFormButton = document.getElementById('clearAttachmentTemplateFormButton');
         const attachmentTemplateList = document.getElementById('attachmentTemplateList');
 
+        // === NOWE: Elementy DOM - Zgłaszanie Błędów ===
+        const reportBugButton = document.getElementById('reportBugButton');
+        const bugReportModalOverlay = document.getElementById('bugReportModalOverlay');
+        const bugReportModal = document.getElementById('bugReportModal');
+        const closeBugReportModalButton = document.getElementById('closeBugReportModalButton');
+        const bugReportMessageArea = document.getElementById('bugReportMessageArea');
+        const bugReportContent = document.getElementById('bugReportContent');
+        const sendBugReportButton = document.getElementById('sendBugReportButton');
 
 
         // === MAIL MERGE ELEMENTS ===
@@ -1435,6 +1474,14 @@
             odpowiedzMessageArea.textContent = text.toUpperCase();
             odpowiedzMessageArea.className = `h-6 text-sm font-medium ${isError ? 'text-red-600' : 'text-green-600'}`;
             setTimeout(() => { odpowiedzMessageArea.textContent = ''; }, 3000);
+        }
+
+        // NOWA: Funkcja komunikatów dla Zgłoszeń
+        function showBugReportMessage(text, isError = false) {
+            if (!bugReportMessageArea) return;
+            bugReportMessageArea.textContent = text.toUpperCase();
+            bugReportMessageArea.className = `h-6 text-sm font-medium text-center ${isError ? 'text-red-600' : 'text-green-600'}`;
+            setTimeout(() => { bugReportMessageArea.textContent = ''; }, 3000);
         }
 
         function showInstitutionAddressMessage(text, isError = false) {
@@ -2273,8 +2320,26 @@
                 return;
             }
             try {
+                // Get the global note value
+                const uwagiForAll = document.getElementById('uwagi_for_all')?.value || "";
+
                 const pdfContent = mailMergeList.map((data, index) => {
-                    const singleReceiptDef = createReceiptContent(data);
+                    // Create a copy of data to not mutate original list
+                    const itemData = { ...data };
+
+                    // Override individual notes if global note is present
+                    // User requested: "wartość ma być drukowana zamiast uwag w zwrotkach drukowanych seryjnie"
+                    // If the field is empty, we fall back to individual notes (standard behavior),
+                    // or should we print nothing if empty?
+                    // "zamiast" implies replacement.
+                    // If the user leaves it empty, they likely want empty notes or original notes?
+                    // Usually "bulk override" means "use this if set".
+                    // I will implement: use uwagiForAll if it is not empty.
+                    if (uwagiForAll.trim() !== "") {
+                        itemData.uwagi_potwierdzenia = uwagiForAll;
+                    }
+
+                    const singleReceiptDef = createReceiptContent(itemData);
                     const contentWrapper = {
                         stack: singleReceiptDef.content
                     };
@@ -3881,6 +3946,59 @@
         // === KONIEC NOWYCH FUNKCJI ===
         // ================================================
 
+        // === NOWE FUNKCJE: Zgłaszanie Błędów ===
+
+        function openBugReportModal() {
+            bugReportModalOverlay.classList.remove('hidden');
+            bugReportModal.classList.remove('hidden');
+            bugReportContent.value = '';
+            bugReportMessageArea.textContent = '';
+        }
+
+        function closeBugReportModal() {
+            bugReportModalOverlay.classList.add('hidden');
+            bugReportModal.classList.add('hidden');
+        }
+
+        async function handleSendBugReport() {
+            const content = bugReportContent.value.trim();
+
+            if (!content) {
+                showBugReportMessage("TREŚĆ ZGŁOSZENIA JEST WYMAGANA.", true);
+                return;
+            }
+
+            // 1. Zapisz do bazy (Firestore)
+            if (bugReportsCollection && userId) {
+                try {
+                    await addDoc(bugReportsCollection, {
+                        content: content,
+                        userEmail: userEmailDisplay.textContent,
+                        timestamp: new Date().toISOString(),
+                        userAgent: navigator.userAgent
+                    });
+                     console.log("Zgłoszenie zapisane w bazie.");
+                } catch (error) {
+                    console.error("Błąd zapisu zgłoszenia do bazy:", error);
+                    // Nie blokujemy wysyłki maila, jeśli baza padnie
+                }
+            } else {
+                console.warn("Brak połączenia z bazą zgłoszeń lub użytkownik niezalogowany.");
+            }
+
+            // 2. Wyślij maila (otwórz klient pocztowy)
+            const subject = "Zgłoszenie błędu / Uwaga - Generator";
+            const body = `ZGŁOSZENIE:\n\n${content}\n\n--\nUżytkownik: ${userEmailDisplay.textContent}\nData: ${new Date().toLocaleString()}`;
+            const mailtoLink = `mailto:jammz2607@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoLink;
+
+            showBugReportMessage("OTWIERANIE KLIENTA POCZTY...", false);
+            setTimeout(() => {
+                closeBugReportModal();
+            }, 2000);
+        }
+
 
         // Generowanie PDF zawiadomienia
         function handleGenerateWsparciePdf() {
@@ -4320,6 +4438,12 @@
             if (saveAttachmentTemplateButton) saveAttachmentTemplateButton.addEventListener('click', handleSaveAttachmentTemplate);
             if (clearAttachmentTemplateFormButton) clearAttachmentTemplateFormButton.addEventListener('click', clearAttachmentTemplateForm);
 
+            // === NOWE: Listenery dla Zgłaszania Błędów ===
+            if (reportBugButton) reportBugButton.addEventListener('click', openBugReportModal);
+            if (closeBugReportModalButton) closeBugReportModalButton.addEventListener('click', closeBugReportModal);
+            if (bugReportModalOverlay) bugReportModalOverlay.addEventListener('click', closeBugReportModal);
+            if (sendBugReportButton) sendBugReportButton.addEventListener('click', handleSendBugReport);
+
 
             // === NOWE: Formatowanie "Jak Nazwy Własne" dla pól formularza wsparcia ===
             const excludedSupportFields = ['wsparcie_numer_orzeczenia', 'wsparcie_numer_sprawy', 'wsparcie_kod_pocztowy']; // DODANO KOD POCZTOWY
@@ -4428,7 +4552,7 @@
         // 2. Uruchom nasłuchiwacze formularza logowania
         if (loginButton) loginButton.addEventListener('click', handleLogin);
         if (registerButton) registerButton.addEventListener('click', handleRegister);
-        if (anonymousLoginButton) anonymousLoginButton.addEventListener('click', handleAnonymousLogin);
+        // handleAnonymousLogin removed
         if (logoutButton) logoutButton.addEventListener('click', handleLogout);
 
         // 3. Centralny obserwator stanu autoryzacji
@@ -4457,12 +4581,16 @@
                 odpowiedziCollection = collection(db, 'artifacts', appId, 'public', 'data', 'odpowiedzi');
                 // --- NOWE: SZABLONY PODSTAW PRAWNYCH (PUBLICZNE) ---
                 legalBasisTemplatesCollection = collection(db, 'artifacts', appId, 'public', 'data', 'legal_basis_templates');
+                // --- NOWE: ZGŁOSZENIA BŁĘDÓW (PUBLICZNE - WRITE ONLY usually, ale tu public) ---
+                bugReportsCollection = collection(db, 'artifacts', appId, 'public', 'data', 'bug_reports');
 
 
                 userEmailDisplay.textContent = user.isAnonymous ? "UŻYTKOWNIK ANONIMOWY" : user.email.toUpperCase();
 
                 appContainer.classList.remove('hidden');
                 authContainer.classList.add('hidden');
+                // Pokaż przycisk zgłaszania błędów po zalogowaniu
+                if(reportBugButton) reportBugButton.classList.remove('hidden');
 
                 loadSettings();
                 loadTemplates();
@@ -4510,6 +4638,8 @@
 
                 appContainer.classList.add('hidden');
                 authContainer.classList.remove('hidden');
+                // Ukryj przycisk zgłaszania błędów po wylogowaniu
+                if(reportBugButton) reportBugButton.classList.add('hidden');
                 userEmailDisplay.textContent = "";
                 clearForm();
             }
