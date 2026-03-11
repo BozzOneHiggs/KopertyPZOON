@@ -36,113 +36,114 @@
             </h2>
             <div id="settingsMessageArea" class="h-6 text-sm font-medium text-red-600 mb-2"></div>
 
-            <div class="grid grid-cols-3 gap-4">
 
-                <div class="col-span-3 text-lg font-semibold border-b border-yellow-200 pb-2 mb-2 text-yellow-700 settings-heading">CZCIONKA I SPACING (GLOBALNIE)</div>
-
-                <div class="col-span-1">
-                    <label for="fontSize" class="block text-xs font-medium text-gray-700">ROZMIAR (PT)</label>
-                    <input type="number" step="1" min="8" max="24" id="fontSize" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
-
-                <div class="col-span-1">
-                    <label for="lineHeight" class="block text-xs font-medium text-gray-700">INTERLINIA (EM)</label>
-                    <input type="number" step="0.1" min="0.8" max="2.0" id="lineHeight" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
-
-                <div class="col-span-1">
-                    <label for="fontWeight" class="block text-xs font-medium text-gray-700">WAGA</label>
-                    <select id="fontWeight" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                        <option value="400">NORMALNA</option>
-                        <option value="700">POGRUBIONA</option>
-                    </select>
-                </div>
-
-                <div class="col-span-3 text-lg font-semibold border-b border-yellow-200 pt-4 pb-2 mb-2 text-yellow-700 settings-heading">POZYCJA NA KOPERCIE (MM)</div>
-
-                <div class="col-span-3 font-medium text-sm text-yellow-800 pt-2">NUMER SPRAWY (MM)</div>
-                <div class="col-span-2">
-                    <label for="numSprawyTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                    <input type="number" step="1" min="0" max="100" id="numSprawyTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
-                <div class="col-span-1">
-                    <label for="numSprawyLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                    <input type="number" step="1" min="0" max="100" id="numSprawyLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+            <div class="space-y-4">
+                <div class="text-lg font-semibold border-b border-yellow-200 pb-2 mb-2 text-yellow-700 settings-heading">CZCIONKA I SPACING (GLOBALNIE)</div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="col-span-1">
+                        <label for="fontSize" class="block text-xs font-medium text-gray-700">ROZMIAR (PT)</label>
+                        <input type="number" step="1" min="8" max="24" id="fontSize" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
+                    <div class="col-span-1">
+                        <label for="lineHeight" class="block text-xs font-medium text-gray-700">INTERLINIA (EM)</label>
+                        <input type="number" step="0.1" min="0.8" max="2.0" id="lineHeight" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
+                    <div class="col-span-1">
+                        <label for="fontWeight" class="block text-xs font-medium text-gray-700">WAGA</label>
+                        <select id="fontWeight" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                            <option value="400">NORMALNA</option>
+                            <option value="700">POGRUBIONA</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="col-span-3 font-medium text-sm text-yellow-800 pt-2">ADRES - POZYCJA CENTRALNA (%)</div>
-                <div class="col-span-2">
-                    <label for="addressTop" class="block text-xs font-medium text-gray-700">POCZĄTEK BLOKU (%)</label>
-                    <input type="number" step="1" min="0" max="100" id="addressTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
-                <div class="col-span-1">
-                    <label for="addressLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (%)</label>
-                    <input type="number" step="1" min="0" max="100" id="addressLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                <div class="text-lg font-semibold border-b border-yellow-200 pt-4 pb-2 mb-2 text-yellow-700 settings-heading">POZYCJA NA KOPERCIE (MM)</div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="col-span-2 font-medium text-sm text-yellow-800">NUMER SPRAWY (MM)</div>
+                    <div class="col-span-1">
+                        <label for="numSprawyTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
+                        <input type="number" step="1" min="0" max="100" id="numSprawyTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
+                    <div class="col-span-1">
+                        <label for="numSprawyLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
+                        <input type="number" step="1" min="0" max="100" id="numSprawyLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
+
+                    <div class="col-span-2 font-medium text-sm text-yellow-800 pt-2">ADRES - POZYCJA CENTRALNA (%)</div>
+                    <div class="col-span-1">
+                        <label for="addressTop" class="block text-xs font-medium text-gray-700">POCZĄTEK BLOKU (%)</label>
+                        <input type="number" step="1" min="0" max="100" id="addressTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
+                    <div class="col-span-1">
+                        <label for="addressLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (%)</label>
+                        <input type="number" step="1" min="0" max="100" id="addressLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
                 </div>
 
-                <div class="col-span-3 text-lg font-semibold border-b border-yellow-200 pt-4 pb-2 mb-2 text-yellow-700 settings-heading">POZYCJA NA POTWIERDZENIU (MM)</div>
+                <div class="text-lg font-semibold border-b border-yellow-200 pt-4 pb-2 mb-2 text-yellow-700 settings-heading">POZYCJA NA POTWIERDZENIU (MM)</div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="col-span-2 font-medium text-sm text-yellow-800">ADRESAT (GÓRA ZWROTKI)</div>
+                    <div class="col-span-1">
+                        <label for="recAdresatTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
+                        <input type="number" step="1" min="0" max="100" id="recAdresatTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
+                    <div class="col-span-1">
+                        <label for="recAdresatLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
+                        <input type="number" step="1" min="0" max="100" id="recAdresatLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
 
-                <div class="col-span-3 font-medium text-sm text-yellow-800 pt-2">ADRESAT (GÓRA ZWROTKI)</div>
-                <div class="col-span-2">
-                    <label for="recAdresatTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                    <input type="number" step="1" min="0" max="100" id="recAdresatTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
-                <div class="col-span-1">
-                    <label for="recAdresatLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                    <input type="number" step="1" min="0" max="100" id="recAdresatLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
+                    <div class="col-span-2 font-medium text-sm text-yellow-800 pt-2">ADRES L.1 (LUB PUSTY WIERSZ)</div>
+                    <div class="col-span-1">
+                        <label for="recAdresCz1Top" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
+                        <input type="number" step="1" min="0" max="100" id="recAdresCz1Top" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
+                    <div class="col-span-1">
+                        <label for="recAdresCz1Left" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
+                        <input type="number" step="1" min="0" max="100" id="recAdresCz1Left" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
 
-                <div class="col-span-3 font-medium text-sm text-yellow-800 pt-2">ADRES L.1 (LUB PUSTY WIERSZ)</div>
-                <div class="col-span-2">
-                    <label for="recAdresCz1Top" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                    <input type="number" step="1" min="0" max="100" id="recAdresCz1Top" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
-                <div class="col-span-1">
-                    <label for="recAdresCz1Left" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                    <input type="number" step="1" min="0" max="100" id="recAdresCz1Left" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
+                    <div class="col-span-2 font-medium text-sm text-yellow-800 pt-2">ADRES L.2</div>
+                    <div class="col-span-1">
+                        <label for="recAdresCz2Top" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
+                        <input type="number" step="1" min="0" max="100" id="recAdresCz2Top" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
+                    <div class="col-span-1">
+                        <label for="recAdresCz2Left" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
+                        <input type="number" step="1" min="0" max="100" id="recAdresCz2Left" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
 
-                <div class="col-span-3 font-medium text-sm text-yellow-800 pt-2">ADRES L.2</div>
-                <div class="col-span-2">
-                    <label for="recAdresCz2Top" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                    <input type="number" step="1" min="0" max="100" id="recAdresCz2Top" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
-                <div class="col-span-1">
-                    <label for="recAdresCz2Left" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                    <input type="number" step="1" min="0" max="100" id="recAdresCz2Left" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
+                    <div class="col-span-2 font-medium text-sm text-yellow-800 pt-2">KOD POCZTOWY / POCZTA</div>
+                    <div class="col-span-1">
+                        <label for="recKodPocztaTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
+                        <input type="number" step="1" min="0" max="100" id="recKodPocztaTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
+                    <div class="col-span-1">
+                        <label for="recKodPocztaLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
+                        <input type="number" step="1" min="0" max="100" id="recKodPocztaLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
 
-                <div class="col-span-3 font-medium text-sm text-yellow-800 pt-2">KOD POCZTOWY / POCZTA</div>
-                <div class="col-span-2">
-                    <label for="recKodPocztaTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                    <input type="number" step="1" min="0" max="100" id="recKodPocztaTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
-                <div class="col-span-1">
-                    <label for="recKodPocztaLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                    <input type="number" step="1" min="0" max="100" id="recKodPocztaLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
+                    <div class="col-span-2 font-medium text-sm text-yellow-800 pt-2">NUMER SPRAWY (DÓŁ ZWROTKI)</div>
+                    <div class="col-span-1">
+                        <label for="recNumSprawyTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
+                        <input type="number" step="1" min="0" max="100" id="recNumSprawyTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
+                    <div class="col-span-1">
+                        <label for="recNumSprawyLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
+                        <input type="number" step="1" min="0" max="100" id="recNumSprawyLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
 
-                <div class="col-span-3 font-medium text-sm text-yellow-800 pt-2">NUMER SPRAWY (DÓŁ ZWROTKI)</div>
-                <div class="col-span-2">
-                    <label for="recNumSprawyTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                    <input type="number" step="1" min="0" max="100" id="recNumSprawyTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    <div class="col-span-2 font-medium text-sm text-yellow-800 pt-2">UWAGI (DÓŁ ZWROTKI)</div>
+                    <div class="col-span-1">
+                        <label for="recUwagiTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
+                        <input type="number" step="1" min="0" max="250" id="recUwagiTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
+                    <div class="col-span-1">
+                        <label for="recUwagiLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
+                        <input type="number" step="1" min="0" max="100" id="recUwagiLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                    </div>
                 </div>
-                <div class="col-span-1">
-                    <label for="recNumSprawyLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</label>
-                    <input type="number" step="1" min="0" max="100" id="recNumSprawyLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
-
-                 <div class="col-span-3 font-medium text-sm text-yellow-800 pt-2">UWAGI (DÓŁ ZWROTKI)</div>
-                <div class="col-span-2">
-                    <label for="recUwagiTop" class="block text-xs font-medium text-gray-700">OD GÓRY (TOP)</label>
-                    <input type="number" step="1" min="0" max="250" id="recUwagiTop" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
-                <div class="col-span-1">
-                    <label for="recUwagiLeft" class="block text-xs font-medium text-gray-700">OD LEWEJ (LEFT)</LAbel>
-                    <input type="number" step="1" min="0" max="100" id="recUwagiLeft" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500">
-                </div>
-
             </div>
+
             <button id="saveSettingsButton" class="w-full mt-4 bg-yellow-600 text-white px-6 py-2 rounded-md hover:bg-yellow-700 transition-colors shadow-lg">ZAPISZ USTAWIENIA</button>
         </div>
     </div>
@@ -2426,7 +2427,7 @@
             }
 
             try {
-                const docRef = doc(envelopesCollection, numerSprawy);
+                const docRef = doc(envelopesCollection, numerSprawy.replace(/\//g, '_'));
                 // DOKONANO ZMIANY: Nie zapisuj szablonu nowych wartości.
                 // Logika: zapisujemy only to, co jest w polach. Jeśli użytkownik użył szablonu
                 // do wypełnienia uwagi_potwierdzenia, zapisujemy wynikową treść (uwagi_potwierdzenia.value),
@@ -2452,7 +2453,7 @@
             }
 
             try {
-                const docRef = doc(envelopesCollection, numerSprawy.toUpperCase());
+                const docRef = doc(envelopesCollection, numerSprawy.toUpperCase().replace(/\//g, '_'));
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
@@ -2678,7 +2679,7 @@
 
             const envelopePromises = caseNumbers.map(async (num) => {
                 try {
-                    const docRef = doc(envelopesCollection, num);
+                    const docRef = doc(envelopesCollection, num.replace(/\//g, '_'));
                     const docSnap = await getDoc(docRef);
                     return docSnap.exists() ? docSnap.data() : null;
                 } catch (error) {
@@ -2744,7 +2745,7 @@
 
             const envelopePromises = caseNumbers.map(async (num) => {
                 try {
-                    const docRef = doc(envelopesCollection, num);
+                    const docRef = doc(envelopesCollection, num.replace(/\//g, '_'));
                     const docSnap = await getDoc(docRef);
                     return docSnap.exists() ? docSnap.data() : null;
                 } catch (error) {
@@ -2802,7 +2803,7 @@
             }
 
             try {
-                const docRef = doc(envelopesCollection, orzeczenieNumber.toUpperCase());
+                const docRef = doc(envelopesCollection, orzeczenieNumber.toUpperCase().replace(/\//g, '_'));
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
@@ -2937,7 +2938,7 @@
             data.timestamp = new Date().toISOString();
 
             try {
-                const docRef = doc(odpowiedziCollection, numerSprawy);
+                const docRef = doc(odpowiedziCollection, numerSprawy.replace(/\//g, '_'));
                 await setDoc(docRef, data);
                 showOdpowiedzMessage("DANE ODPOWIEDZI ZOSTAŁY ZAPISANE.", false);
             } catch (error) {
@@ -2959,7 +2960,7 @@
             }
 
             try {
-                const docRef = doc(odpowiedziCollection, numerSprawy);
+                const docRef = doc(odpowiedziCollection, numerSprawy.replace(/\//g, '_'));
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
@@ -3401,7 +3402,7 @@
             }
 
             try {
-                const docRef = doc(envelopesCollection, orzeczenieNumber.toUpperCase());
+                const docRef = doc(envelopesCollection, orzeczenieNumber.toUpperCase().replace(/\//g, '_'));
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
@@ -3491,7 +3492,7 @@
             };
 
             try {
-                const docRef = doc(supportApplicationsCollection, numerSprawy);
+                const docRef = doc(supportApplicationsCollection, numerSprawy.replace(/\//g, '_'));
                 // DOKONANO ZMIANY: "przy zapisywaniu danych nie zapisuj w bazie szablonów nowych wartości"
                 // Ta zasada jest spełniona - zapisujemy TYLKO wartości pól (data.dynamic_attachments)
                 // oraz listę wybranych formularzy (data.formularze_zalaczniki), nie modyfikując szablonów (attachmentsCollection).
@@ -3516,7 +3517,7 @@
             }
 
             try {
-                const docRef = doc(supportApplicationsCollection, numerSprawy);
+                const docRef = doc(supportApplicationsCollection, numerSprawy.replace(/\//g, '_'));
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
