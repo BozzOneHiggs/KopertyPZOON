@@ -2143,22 +2143,37 @@
             setTimeout(() => { mailMergeMessageArea.textContent = ''; }, 3000);
         }
 
-        function loadFromMailMerge(item) {
-             if (inputs.numer_sprawy) inputs.numer_sprawy.value = item.numer_sprawy || '';
-             if (inputs.adresat) inputs.adresat.value = item.adresat || '';
-             if (inputs.adres_cz1) inputs.adres_cz1.value = item.adres_cz1 || '';
-             if (inputs.adres_cz2) inputs.adres_cz2.value = item.adres_cz2 || '';
-             if (inputs.kod_pocztowy) inputs.kod_pocztowy.value = item.kod_pocztowy || '';
-             if (inputs.poczta) inputs.poczta.value = item.poczta || '';
-             if (inputs.uwagi_potwierdzenia) inputs.uwagi_potwierdzenia.value = item.uwagi_potwierdzenia || '';
-             if (inputs.dotyczy_potwierdzenia) inputs.dotyczy_potwierdzenia.value = item.dotyczy_potwierdzenia || '';
+        async function loadFromMailMerge(item) {
+            let dataToLoad = item;
+
+            // Fetch fresh data from Firestore in case it was updated after the search
+            if (envelopesCollection && item.numer_sprawy) {
+                try {
+                    const docRef = doc(envelopesCollection, item.numer_sprawy.replace(/\//g, '_'));
+                    const docSnap = await getDoc(docRef);
+                    if (docSnap.exists()) {
+                        dataToLoad = docSnap.data();
+                    }
+                } catch (error) {
+                    console.error("BŁĄD POBIERANIA AKTUALNYCH DANYCH:", error);
+                }
+            }
+
+             if (inputs.numer_sprawy) inputs.numer_sprawy.value = dataToLoad.numer_sprawy || '';
+             if (inputs.adresat) inputs.adresat.value = dataToLoad.adresat || '';
+             if (inputs.adres_cz1) inputs.adres_cz1.value = dataToLoad.adres_cz1 || '';
+             if (inputs.adres_cz2) inputs.adres_cz2.value = dataToLoad.adres_cz2 || '';
+             if (inputs.kod_pocztowy) inputs.kod_pocztowy.value = dataToLoad.kod_pocztowy || '';
+             if (inputs.poczta) inputs.poczta.value = dataToLoad.poczta || '';
+             if (inputs.uwagi_potwierdzenia) inputs.uwagi_potwierdzenia.value = dataToLoad.uwagi_potwierdzenia || '';
+             if (inputs.dotyczy_potwierdzenia) inputs.dotyczy_potwierdzenia.value = dataToLoad.dotyczy_potwierdzenia || '';
 
              updatePreview();
 
              if (inputs.kod_pocztowy.value) {
                 handlePostalCodeInput();
              }
-             showMessage(`WCZYTANO: ${item.numer_sprawy}`, false);
+             showMessage(`WCZYTANO: ${dataToLoad.numer_sprawy}`, false);
         }
 
         async function handleMailMergeSearch() {
