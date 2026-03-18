@@ -2331,7 +2331,9 @@
         }
 
         function clearForm() {
-            Object.values(inputs).forEach(input => input.value = '');
+            for (const key in inputs) {
+                inputs[key].value = '';
+            }
             if(postOfficeList) postOfficeList.innerHTML = '';
             updatePreview();
         }
